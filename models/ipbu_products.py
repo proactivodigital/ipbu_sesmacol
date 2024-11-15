@@ -235,6 +235,6 @@ class IPBUProductLine(models.Model):
                 line.destination_expenses = line.ipbu_id.total_destination_expenses * line.ponderado_incoterm
 
     @api.depends('ipbu_id.category')
-    def _compute_category():
+    def _compute_category(self):
         for line in self:
             line.category = line.ipbu_id.category
