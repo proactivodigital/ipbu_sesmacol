@@ -195,8 +195,8 @@ class IPBU(models.Model):
         for record in self:
             if record.lead_id:
                 record.lead_id.ensure_one()
-                if record.lead_id.x_studio_rea:
-                    first_character = record.lead_id.x_studio_rea[:1].upper()
+                if record.lead_id.x_studio_area:
+                    first_character = record.lead_id.x_studio_area[:1].upper()
                     record.area = first_character
 
     @api.depends('lead_id')
