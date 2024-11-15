@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_crm_lead_kanban_inherit" model="ir.ui.view">
+            <field name="name">crm.lead.kanban.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_kanban_view_leads"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_kanban_details']" position="after">
+                    <div class="oe_kanban_code">
+                        <strong class="o_kanban_record_title"><field name="code"/></strong>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

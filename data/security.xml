@@ -1,0 +1,24 @@
+<odoo>
+    <data>
+        <!-- Definición de reglas de acceso para el modelo de IPBU -->
+        <record id="access_ipbu_model" model="ir.model.access">
+            <field name="name">Access for IPBU Model</field>
+            <field name="model_id" ref="model_ipbu_ipbu"/>
+            <field name="group_id" ref="base.group_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+        <record id="access_ipbu_products_model" model="ir.model.access">
+            <field name="name">Access for ipbu products Model</field>
+            <field name="model_id" ref="model_ipbu_product_line"/>
+            <field name="group_id" ref="base.group_user"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+    </data>
+</odoo>

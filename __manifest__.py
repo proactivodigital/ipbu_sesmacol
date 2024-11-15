@@ -1,0 +1,21 @@
+{
+    "name": " IPBU",
+    "version": "1.0",
+    "category": "Accounting",
+    "summary": "Module for cost management",
+    "description": "This module helps in managing and analyzing costs.",
+    "depends": ["base", "account", "product", "sale_management", "crm"],
+    "data": [
+        "data/security.xml",
+        "data/ir_sequence.xml",
+        "views/ipbu_views.xml",
+        "views/ipbu_menu.xml",
+        "views/crm_lead_views.xml",
+        "views/crm_lead_kanban.xml",
+        "views/sale_order.xml",
+        "views/sale_order_kanban.xml",
+    ],
+    "installable": True,
+    "application": False,
+    'license': "LGPL-3",
+}

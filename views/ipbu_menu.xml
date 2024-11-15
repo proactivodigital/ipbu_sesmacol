@@ -1,0 +1,25 @@
+<odoo>
+    <data>
+        <!-- Acción para abrir el modelo de ipbu -->
+        <record id="action_ipbu" model="ir.actions.act_window">
+            <field name="name">ipbu</field>
+            <field name="res_model">ipbu.ipbu</field> <!-- Reemplaza con el nombre técnico de tu modelo -->
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="action_view_ipbu" model="ir.actions.act_window">
+            <field name="name">IPBU</field>
+            <field name="res_model">ipbu.ipbu</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('lead_id', '=', active_id)]</field>
+        </record>
+
+        <!-- Submenú de ipbu -->
+        <record id="menu_ipbu" model="ir.ui.menu">
+            <field name="name">IPBU</field> <!-- Nombre del submenú -->
+            <field name="parent_id" ref="crm.crm_menu_sales"/>
+            <field name="action" ref="action_ipbu"/> <!-- Acción a ejecutar al hacer clic en el submenú -->
+            <field name="sequence" eval="50"/> <!-- Orden en el que aparece en el menú -->
+        </record>
+    </data>
+</odoo>

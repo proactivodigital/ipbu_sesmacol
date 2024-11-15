@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="view_crm_lead_tree_inherit" model="ir.ui.view">
+            <field name="name">sale.view_quotation_tree_with_onboarding_inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+            <field name="arch" type="xml">
+                <!-- Localizamos el campo 'name' para reemplazarlo -->
+                <xpath expr="//field[@name='name']" position="replace">
+                    <!-- Cambiamos el campo por 'code' con los mismos atributos -->
+                    <field name="code" string="Número" readonly="1" decoration-bf="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
