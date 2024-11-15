@@ -212,14 +212,14 @@ class IPBU(models.Model):
     def _compute_invoices_company(self):
         for record in self:
             if record.companies:
-                record.invoices_company = record.companies.x_studio_abreviatura
+                record.invoices_company = record.companies.x_studio_abbreviation
             else:
                 record.invoices_company = ''                
     
     @api.depends('lead_id')
     def _compute_principal_supplier(self):
         if self.lead_id:
-            self.principal_supplier = self.lead_id.x_studio_proveedor_principal.x_studio_abreviatura
+            self.principal_supplier = self.lead_id.x_studio_main_supplier.x_studio_abbreviation
         return 
 
     @api.onchange('product_line_ids')
