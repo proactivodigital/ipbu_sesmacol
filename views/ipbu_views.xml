@@ -78,6 +78,8 @@
                                     <field name="product_cost" />
                                     <field name="local_buy" />
                                     <field name="delivery_time" />
+                                    <field name="discount" widget="percentage"/>
+                                    <field name="local_utility" />
                                 </tree>
                             </field>
                         </page>
@@ -87,8 +89,8 @@
                                     <field name="ipbu_id" invisible="1" readonly="1"/>
                                     <field name="product_id"/>
                                     <field name="origin_expenses" readonly="1 if ipbu_id.category == 'Equipos' else 0"/>
-                                    <field name="cost_custom" />
-                                    <field name="destination_expenses" />
+                                    <field name="cost_custom" readonly="1 if ipbu_id.category == 'Equipos' else 0"/>
+                                    <field name="destination_expenses" readonly="1 if ipbu_id.category == 'Equipos' else 0"/>
                                 </tree>
                             </field>
                         </page>
@@ -113,8 +115,6 @@
                             <field name="product_line_ids" nolabel="1" widget="section_and_note_one2many" mode="tree,kanban">
                                 <tree editable="bottom" limit="200">
                                     <field name="product_id"/>
-                                    <field name="discount" widget="percentage"/>
-                                    <field name="local_utility" />
                                     <field name="local" />
                                     <field name="local_cant" />
                                     <field name="local_incoterm" />
