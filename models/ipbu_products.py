@@ -47,6 +47,7 @@ class IPBUProductLine(models.Model):
     real_margin = fields.Float(string='Margen Real', compute='_compute_real_margin', default="0.0", required=False, store=True, readonly=False, tracking=True)
     supplier = fields.Text(string='Proveedor', store=True, tracking=True)
     discount = fields.Float(string='Descuento', compute='_compute_discount', default="0.0", required=False, store=True, readonly=False, tracking=True)
+    category = fields.Text(string='Category', store=True, tracking=True, required=False, readonly=False, compute='_compute_category')
 
     @api.depends('origin_expenses', 'cost_custom', 'destination_expenses', 'ipbu_id.total_origin_expenses', 'ipbu_id.total_cost_custom', 'ipbu_id.total_destination_expenses')
     def _compute_ponderado_incoterm(self):
@@ -227,9 +228,13 @@ class IPBUProductLine(models.Model):
             if line.ipbu_id.category == 'Repuestos':
                 line.cost_custom = line.ipbu_id.total_cost_custom * line.ponderado_incoterm
 
-
     @api.depends('ponderado_incoterm')
     def _compute_destination_expenses(self):
         for line in self:
             if line.ipbu_id.category == 'Repuestos':
                 line.destination_expenses = line.ipbu_id.total_destination_expenses * line.ponderado_incoterm
+
+    @api.depends('ipbu_id.category')
+    def _compute_category():
+        for line in self:
+            line.category = line.ipbu_id.category

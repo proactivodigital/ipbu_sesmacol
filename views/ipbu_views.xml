@@ -88,9 +88,9 @@
                                 <tree editable="bottom" limit="200">
                                     <field name="category" invisible="1" readonly="1"/>
                                     <field name="product_id"/>
-                                    <field name="origin_expenses" readonly="1 if ipbu_id.category == 'Equipos' else 0"/>
-                                    <field name="cost_custom" readonly="1 if ipbu_id.category == 'Equipos' else 0"/>
-                                    <field name="destination_expenses" readonly="1 if ipbu_id.category == 'Equipos' else 0"/>
+                                    <field name="origin_expenses" readonly="1 if category == 'Equipos' else 0"/>
+                                    <field name="cost_custom" readonly="1 if category == 'Equipos' else 0"/>
+                                    <field name="destination_expenses" readonly="1 if category == 'Equipos' else 0"/>
                                 </tree>
                             </field>
                         </page>
