@@ -48,7 +48,6 @@ class IPBUProductLine(models.Model):
     supplier = fields.Text(string='Proveedor', store=True, tracking=True)
     discount = fields.Float(string='Descuento', compute='_compute_discount', default="0.0", required=False, store=True, readonly=False, tracking=True)
     category = fields.Text(string='Category', store=True, tracking=True, required=False, readonly=False, compute='_compute_category')
-    readonly = fields.Boolean(compute="_compute_readonly", string="Readonly")
 
     @api.depends('origin_expenses', 'cost_custom', 'destination_expenses', 'ipbu_id.total_origin_expenses', 'ipbu_id.total_cost_custom', 'ipbu_id.total_destination_expenses')
     def _compute_ponderado_incoterm(self):
@@ -68,12 +67,6 @@ class IPBUProductLine(models.Model):
     
     def _compute_discount(self):
         return
-
-    @api.depends('category')
-    def _compute_readonly(self):
-        for record in self:
-            if record.category == 'Equipos':
-                record.readonly = True
 
     @api.depends('cost_custom', 'destination_expenses')
     def _compute_logistic_margin(self):

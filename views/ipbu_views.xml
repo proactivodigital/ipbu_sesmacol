@@ -87,10 +87,10 @@
                             <field name="product_line_ids" nolabel="1" widget="section_and_note_one2many" mode="tree,kanban">
                                 <tree editable="bottom" limit="200">
                                     <field name="product_id"/>
-                                    <field name="readonly" invisible="1" readonly="1"/>
-                                    <field name="origin_expenses" readonly="readonly"/>
-                                    <field name="cost_custom" readonly="readonly"/>
-                                    <field name="destination_expenses" readonly="readonly"/>
+                                    <field name="category"/>
+                                    <field name="origin_expenses" readonly="1 if category == 'Equipos' else 0"/>
+                                    <field name="cost_custom" readonly="1 if category == 'Equipos' else 0"/>
+                                    <field name="destination_expenses" readonly="1 if category == 'Equipos' else 0"/>
                                 </tree>
                             </field>
                         </page>
