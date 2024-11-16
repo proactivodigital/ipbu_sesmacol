@@ -61,7 +61,7 @@ class IPBU(models.Model):
     has_quotation = fields.Boolean(string='Cotización Creada', default=False, tracking=True)
     quotation_id = fields.Many2one('sale.order', string='Cotización')
     lead_code = fields.Text(string='Código Oportunidad', store=True, tracking=True, compute='_compute_lead_code')
-    readonly = fields.Boolean(compute="_compute_readonly", string="Readonly")
+
 
     def action_confirm(self):
         if not self.lead_id:
@@ -133,12 +133,6 @@ class IPBU(models.Model):
         for record in self:
             total_cost_cac = sum(line.cost_qty for line in record.product_line_ids)
             record.total_cost_cac = total_cost_cac
-
-    @api.depends('category')
-    def _compute_readonly(self):
-        for record in self:
-            if record.category == 'Equipos':
-                record.readonly = 1
 
     @api.depends('product_line_ids')
     def _compute_total_sale_exw(self):
