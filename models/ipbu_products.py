@@ -73,7 +73,7 @@ class IPBUProductLine(models.Model):
     def _compute_readonly(self):
         for record in self:
             if record.category == 'Equipos':
-                record.readonly = 1
+                record.readonly = True
 
     @api.depends('cost_custom', 'destination_expenses')
     def _compute_logistic_margin(self):
