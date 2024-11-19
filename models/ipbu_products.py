@@ -137,7 +137,7 @@ class IPBUProductLine(models.Model):
     @api.depends('intern_price', 'product_qty', 'local_utility')
     def _compute_local(self):
         for line in self:
-            if line.local_utility <= 0 or line.local_utility <= 0 or line.intern_price <= 0 or line.product_qty <= 0:
+            if line.local_utility <= 0 or line.intern_price <= 0 or line.product_qty <= 0:
                 line.local = 0.0
             else:
                 line.local = math.ceil((line.intern_price / line.product_qty) + (line.local_utility / line.product_qty))

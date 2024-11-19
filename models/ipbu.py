@@ -223,33 +223,6 @@ class IPBU(models.Model):
             self.principal_supplier = self.lead_id.x_studio_main_supplier.x_studio_abbreviation
         return 
 
-    @api.onchange('product_line_ids')
-    def _onchange_product_line_ids(self):
-        if self.product_line_ids:
-            for index, line in enumerate(self.product_line_ids):
-                if index == 0:
-                    can_sum = False
-                    total_sum = 0
-                    utility_difference = line.utility - line.local_utility
-
-                    for l in line.ipbu_id.product_line_ids:
-                        total_sum += l.utility_cac
-                        if l.local_buy == 'yes': 
-                            can_sum = True
-
-                    local_utility_sum = total_sum if can_sum else 0
-
-                    line.is_first_product = True
-                    line.utility_cac = math.ceil(utility_difference + local_utility_sum)
-                    line.real_margin = self.margin
-                    line.discount = self.line_discount
-                else:
-                    line.is_first_product = False
-                    line.utility_cac = math.ceil(line.utility - line.local_utility)
-                    line.real_margin = self.margin
-                    line.discount = self.line_discount
-        return
-
     @api.model
     def create(self, vals):
         record = super(IPBU, self).create(vals)
@@ -267,8 +240,16 @@ class IPBU(models.Model):
             if record.product_line_ids:
                 for index, line in enumerate(record.product_line_ids):
                     if index == 0:
+                        can_sum = False
+                        total_sum = 0
                         utility_difference = line.utility - line.local_utility
-                        local_utility_sum = sum(l.utility_cac for l in line.ipbu_id.product_line_ids if l.local_buy == 'yes')
+
+                        for l in line.ipbu_id.product_line_ids:
+                            total_sum += l.utility_cac
+                            if l.local_buy == 'yes': 
+                                can_sum = True
+
+                        local_utility_sum = total_sum if can_sum else 0
 
                         line.is_first_product = True
                         line.utility_cac = math.ceil(utility_difference + local_utility_sum)
