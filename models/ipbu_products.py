@@ -39,7 +39,7 @@ class IPBUProductLine(models.Model):
     DDP_unit = fields.Float(string='DDP unitario', compute='_compute_DDP_unit', required=False, store=True, readonly=True)
     DDP_total = fields.Float(string='DDP total', compute='_compute_DDP_total', required=False, store=True, readonly=True)
     is_first_product = fields.Boolean(default=False, required=False, store=True, readonly=True)
-    utility_cac = fields.Float(string='Utilidad', compute='_compute_utility_cac', required=False, store=True, readonly=True)
+    utility_cac = fields.Float(string='Utilidad', required=False, store=True, readonly=True)
     cac = fields.Float(string='CAC', compute='_compute_cac', required=False, store=True, readonly=True)
     cac_cant = fields.Float(string='CAC por cantidad', compute='_compute_cac_cant', required=False, store=True, readonly=True)
     incoterm_cac = fields.Float(string='Incoterm', compute='_compute_incoterm_cac', required=False, store=True, readonly=True)
@@ -172,23 +172,6 @@ class IPBUProductLine(models.Model):
                 line.DDP_total = 0.0
             else:
                 line.DDP_total = math.ceil(line.DDP_unit * line.product_qty)
-
-    @api.depends('local_utility', 'utility', 'local_buy', 'is_first_product')
-    def _compute_utility_cac(self):
-        for line in self:
-            _logger.info(f"Producto {line.id}: is_first_product = {line.is_first_product}")
-            # Solo se ejecutará para el primer producto
-            if line.is_first_product:
-                # Comprobar si utility y local_utility están disponibles
-                if line.utility <= 0 or line.local_utility <= 0:
-                    line.utility_cac = 0.0
-                else:
-                    # Calcular el valor utilizando la lógica de la fórmula
-                    utility_difference = line.utility - line.local_utility
-                    local_utility_sum = sum(l.utility_cac for l in line.ipbu_id.product_line_ids if l.local_buy == 'yes')
-                    line.utility_cac = math.ceil(utility_difference + local_utility_sum)
-            else:
-                line.utility_cac = math.ceil(line.utility - line.local_utility)
 
     @api.depends('cost', 'utility_cac', 'product_qty')
     def _compute_cac(self):

@@ -228,8 +228,16 @@ class IPBU(models.Model):
         if self.product_line_ids:
             for index, line in enumerate(self.product_line_ids):
                 if index == 0:
+                    can_sum = False
+                    total_sum = 0
                     utility_difference = line.utility - line.local_utility
-                    local_utility_sum = sum(l.utility_cac for l in line.ipbu_id.product_line_ids if l.local_buy == 'yes')
+
+                    for l in line.ipbu_id.product_line_ids:
+                        total_sum += l.utility_cac
+                        if l.local_buy == 'yes': 
+                            can_sum = True
+
+                    local_utility_sum = total_sum if can_sum else 0
 
                     line.is_first_product = True
                     line.utility_cac = math.ceil(utility_difference + local_utility_sum)
