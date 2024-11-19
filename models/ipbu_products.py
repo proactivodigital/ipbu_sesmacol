@@ -129,7 +129,7 @@ class IPBUProductLine(models.Model):
             if line.quotation_total <= 0 or line.ipbu_id.local_utility <= 0:
                 line.local_utility = 0.0
             else:
-                line.local_utility = math.ceil(line.quotation_total * line.ipbu_id.local_utility)
+                line.local_utility = line.quotation_total * line.ipbu_id.local_utility
                 _logger.warning(line.quotation_total)
                 _logger.warning(line.ipbu_id.local_utility)
                 _logger.warning(line.quotation_total * line.ipbu_id.local_utility)
