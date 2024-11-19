@@ -158,7 +158,7 @@ class IPBUProductLine(models.Model):
                 for l in line.ipbu_id.product_line_ids:
                     division += l.local_cant
 
-                if divison <= 0:
+                if division <= 0:
                     line.local_incoterm = 0
                 else:
                     line.local_incoterm = ((sum_total) * line.local_cant) / division
