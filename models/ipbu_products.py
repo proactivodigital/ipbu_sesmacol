@@ -193,7 +193,10 @@ class IPBUProductLine(models.Model):
     def _compute_incoterm_cac(self):
         for line in self:
             cac_cant_sum = sum(line.cac_cant for line in line.ipbu_id.product_line_ids)
-            line.incoterm_cac = math.ceil((line.origin_expenses * line.cac_cant) / (cac_cant_sum))
+            if cac_cant_sum > 0:
+                line.incoterm_cac = math.ceil((line.origin_expenses * line.cac_cant) / (cac_cant_sum))
+            else:
+                line.incoterm_cac = 0
 
     @api.depends('cac_cant', 'incoterm_cac')
     def _compute_intern_price(self):
