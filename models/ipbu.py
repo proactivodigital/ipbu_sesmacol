@@ -244,7 +244,7 @@ class IPBU(models.Model):
                         total_sum = 0
                         utility_difference = line.utility - line.local_utility
 
-                        for i, l in line.ipbu_id.product_line_ids:
+                        for i, l in enumerate(line.ipbu_id.product_line_ids):
                             if l.local_buy == 'yes': 
                                 can_sum = True
                             if i != 0:
