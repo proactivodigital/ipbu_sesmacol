@@ -59,7 +59,10 @@ class IPBUProductLine(models.Model):
             total = total_logistics_margin + total_cost_custom + total_destination_expenses
             divisor = sum(line.local_cant for line in line.ipbu_id.product_line_ids)
             if total != 0 and divisor != 0:
-                line.ponderado_incoterm = total * line.local_cant / divisor
+                _logger.warning(total)
+                _logger.warning(divisor)
+                _logger.warning(line.local_cant)
+                line.ponderado_incoterm = (total * line.local_cant) / divisor
             else:
                 line.ponderado_incoterm = 0.0
 
