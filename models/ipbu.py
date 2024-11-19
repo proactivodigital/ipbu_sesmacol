@@ -100,7 +100,7 @@ class IPBU(models.Model):
 
         # Creamos las líneas de la cotización usando los productos del IPBU
         for product_line in self.product_line_ids:
-            product_description = product_line.product_description or product_line.product_id.name
+            product_description = product_line.description or product_line.name
 
             order_line_vals = {
                 'order_id': sale_order.id,  # Asignamos la cotización creada

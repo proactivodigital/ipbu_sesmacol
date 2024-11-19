@@ -79,7 +79,7 @@
                                     <field name="local_buy" />
                                     <field name="delivery_time" />
                                     <field name="discount" widget="percentage"/>
-                                    <field name="local_utility" />
+                                    <field name="real_margin" widget="percentage"/>
                                 </tree>
                             </field>
                         </page>
@@ -100,7 +100,6 @@
                                     <field name="product_id"/>
                                     <field name="cost_qty" />
                                     <field name="cost" />
-                                    <field name="real_margin" widget="percentage" />
                                     <field name="sale_exw" />
                                     <field name="sale_qty_exw" />
                                     <field name="ponderado_incoterm" widget="percentage" />
