@@ -13,7 +13,7 @@ class IPBUProductLine(models.Model):
     product_id = fields.Many2one('product.template', string='Producto', required=False)
     product_qty = fields.Float(string='Cantidad', required=False, store=True, tracking=True)
     product_cost = fields.Float(string='Costo producto', required=False, store=True, tracking=True)
-    product_description = fields.Text(string='Descripción', store=True, tracking=True)
+    product_description = fields.Text(string='Descripción', store=True, tracking=True, compute='_compute_description')
     local_buy = fields.Selection([
         ('yes', 'Sí'),
         ('no', 'No'),
@@ -233,6 +233,17 @@ class IPBUProductLine(models.Model):
         for line in self:
             if line.ipbu_id.category == 'Repuestos':
                 line.destination_expenses = line.ipbu_id.total_destination_expenses * line.ponderado_incoterm
+
+    @api.depends('product_id')
+    def _compute_description(self):
+        for line in self:
+            if line.product_id:
+                product_description = line.product_id.description or line.product_id.name or line.product_id.description_sale
+                _logger.warning(line.product_id.description)
+                _logger.warning(line.product_id.name)
+                _logger.warning(line.product_id.description_sale)
+
+                line.description = product_description
 
     @api.depends('ipbu_id.category')
     def _compute_category(self):

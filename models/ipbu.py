@@ -103,7 +103,7 @@ class IPBU(models.Model):
             product_description = product_line.description or product_line.name or product_line.description_sale
             _logger.warning(product_line.description)
             _logger.warning(product_line.name)
-            _logger.warning(product_line.description_sale)
+            _logger.warning("Este es un mensaje de WARNING")
 
             order_line_vals = {
                 'order_id': sale_order.id,  # Asignamos la cotización creada
@@ -243,17 +243,6 @@ class IPBU(models.Model):
                     line.utility_cac = math.ceil(line.utility - line.local_utility)
                     line.real_margin = self.margin
                     line.discount = self.line_discount
-        return
-
-    @api.onchange('product_line_ids')
-    def _onchange_product_line_ids(self):
-        if self.product_line_ids:
-            for line in self.product_line_ids:
-                if line.real_margin <= 0:
-                    line.real_margin = self.margin
-                    
-                if line.discount <= 0:
-                    line.discount = self.line_discount  
         return
 
     @api.model

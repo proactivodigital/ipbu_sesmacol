@@ -49,9 +49,9 @@
                         </group>
                         <group>
                             <field name="date" string="Fecha"/>
-                            <field name="total_origin_expenses" readonly="1 if category == 'Equipos' else 0"/>
-                            <field name="total_cost_custom" readonly="1 if category == 'Equipos' else 0"/>
-                            <field name="total_destination_expenses" readonly="1 if category == 'Equipos' else 0"/>
+                            <field name="total_origin_expenses" readonly="0 if category == 'Equipos' else 1"/>
+                            <field name="total_cost_custom" readonly="0 if category == 'Equipos' else 1"/>
+                            <field name="total_destination_expenses" readonly="0 if category == 'Equipos' else 1"/>
                             <field name="total_logistics_margin"/>
                         </group>
                     </group>
