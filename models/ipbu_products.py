@@ -52,13 +52,14 @@ class IPBUProductLine(models.Model):
     @api.depends('origin_expenses', 'cost_custom', 'destination_expenses', 'ipbu_id.total_origin_expenses', 'ipbu_id.total_cost_custom', 'ipbu_id.total_destination_expenses')
     def _compute_ponderado_incoterm(self):
         for line in self:
-            total_origin_expenses = line.ipbu_id.total_origin_expenses
+            total_logistics_margin = line.ipbu_id.total_logistics_margin
             total_cost_custom = line.ipbu_id.total_cost_custom
             total_destination_expenses = line.ipbu_id.total_destination_expenses
 
-            divisor = total_origin_expenses + total_cost_custom + total_destination_expenses
-            if divisor != 0:
-                line.ponderado_incoterm = (line.origin_expenses + line.cost_custom + line.destination_expenses) / divisor
+            total = total_logistics_margin + total_cost_custom + total_destination_expenses
+            divisor = sum(line.local_cant for line in line.ipbu_id.product_line_ids)
+            if total != 0:
+                line.ponderado_incoterm = total * line.local_cant / divisor
             else:
                 line.ponderado_incoterm = 0.0
 
