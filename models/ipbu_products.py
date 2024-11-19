@@ -126,10 +126,12 @@ class IPBUProductLine(models.Model):
     @api.depends('quotation_total', 'ipbu_id.local_utility')
     def _compute_local_utility(self):
         for line in self:
-            if line.quotation_total <= 0 or line.quotation_total <= 0:
+            if line.quotation_total <= 0 or line.ipbu_id.local_utility <= 0:
                 line.local_utility = 0.0
             else:
                 line.local_utility = math.ceil(line.quotation_total * line.ipbu_id.local_utility)
+                _logger.warning(line.quotation_total)
+                _logger.warning(line.ipbu_id.local_utility)
 
     @api.depends('intern_price', 'product_qty', 'local_utility')
     def _compute_local(self):
