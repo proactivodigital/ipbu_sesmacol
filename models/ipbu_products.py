@@ -49,18 +49,16 @@ class IPBUProductLine(models.Model):
     discount = fields.Float(string='Descuento', compute='_compute_discount', default="0.0", required=False, store=True, readonly=False, tracking=True)
     category = fields.Text(string='Category', store=True, tracking=True, required=False, readonly=False, compute='_compute_category')
 
-    @api.depends('ipbu_id.total_logistics_margin', 'ipbu_id.total_cost_custom', 'ipbu_id.total_destination_expenses', 'local_cant')
+    @api.depends('origin_expenses', 'cost_custom', 'destination_expenses', 'ipbu_id.total_origin_expenses', 'ipbu_id.total_cost_custom', 'ipbu_id.total_destination_expenses')
     def _compute_ponderado_incoterm(self):
         for line in self:
-            divisor = 0
-            for l in line.ipbu_id.product_line_ids:
-                divisor += l.local_cant
+            total_origin_expenses = line.ipbu_id.total_origin_expenses
+            total_cost_custom = line.ipbu_id.total_cost_custom
+            total_destination_expenses = line.ipbu_id.total_destination_expenses
 
-            _logger.warning(divisor)
-
+            divisor = total_origin_expenses + total_cost_custom + total_destination_expenses
             if divisor != 0:
-                total = line.ipbu_id.total_logistics_margin + line.ipbu_id.total_cost_custom + line.ipbu_id.total_destination_expenses
-                line.ponderado_incoterm = (total * line.local_cant) / divisor
+                line.ponderado_incoterm = (line.origin_expenses + line.cost_custom + line.destination_expenses) / divisor
             else:
                 line.ponderado_incoterm = 0.0
 
@@ -152,7 +150,18 @@ class IPBUProductLine(models.Model):
     @api.depends('cost_custom', 'destination_expenses', 'logistic_margin')
     def _compute_local_incoterm(self):
         for line in self:
-            line.local_incoterm = math.ceil(line.cost_custom + line.destination_expenses + line.logistic_margin)
+            if line.category == 'Equipos':
+                line.local_incoterm = math.ceil(line.cost_custom + line.destination_expenses + line.logistic_margin)
+            else:
+                sum_total = line.ipbu_id.total_cost_custom + line.ipbu_id.total_destination_expenses + line.ipbu_id.total_logistics_margin
+                division = 0
+                for l in line.ipbu_id.product_line_ids:
+                    division += l.local_cant
+
+                if divison <= 0:
+                    line.local_incoterm = 0
+                else:
+                    line.local_incoterm = ((sum_total) * line.local_cant) / division
 
     @api.depends('local_incoterm', 'local_cant')
     def _compute_total_customer(self):
