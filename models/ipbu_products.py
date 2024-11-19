@@ -238,12 +238,7 @@ class IPBUProductLine(models.Model):
     def _compute_description(self):
         for line in self:
             if line.product_id:
-                product_description = line.product_id.description or line.product_id.name or line.product_id.description_sale
-                _logger.warning(line.product_id.description)
-                _logger.warning(line.product_id.name)
-                _logger.warning(line.product_id.description_sale)
-
-                line.description = product_description
+                line.product_description = line.product_id.description_sale
 
     @api.depends('ipbu_id.category')
     def _compute_category(self):
