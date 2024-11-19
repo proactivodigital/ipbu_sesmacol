@@ -244,10 +244,11 @@ class IPBU(models.Model):
                         total_sum = 0
                         utility_difference = line.utility - line.local_utility
 
-                        for l in line.ipbu_id.product_line_ids:
-                            total_sum += l.utility_cac
+                        for i, l in line.ipbu_id.product_line_ids:
                             if l.local_buy == 'yes': 
                                 can_sum = True
+                            if i != 0:
+                                total_sum += l.utility_cac
                             
                         local_utility_sum = total_sum if can_sum else 0
 
