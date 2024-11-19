@@ -203,11 +203,20 @@ class IPBUProductLine(models.Model):
     @api.depends('origin_expenses', 'cac_cant')
     def _compute_incoterm_cac(self):
         for line in self:
-            cac_cant_sum = sum(line.cac_cant for line in line.ipbu_id.product_line_ids)
-            if cac_cant_sum > 0:
-                line.incoterm_cac = math.ceil((line.origin_expenses * line.cac_cant) / (cac_cant_sum))
+            if line.category == "Repuestos":
+                cac_cant_sum = sum(line.cac_cant for line in line.ipbu_id.product_line_ids)
+                if cac_cant_sum > 0:
+                    _logger.warning("Gastos origen")
+                    _logger.warning(line.origin_expenses)
+                    _logger.warning("CAC * cant")
+                    _logger.warning(line.cac_cant)
+                    _logger.warning("SUMA DEL CAC * CANT todas las lineas")
+                    _logger.warning(cac_cant_sum)
+                    line.incoterm_cac = (line.origin_expenses * line.cac_cant) / (cac_cant_sum)
+                else:
+                    line.incoterm_cac = 0
             else:
-                line.incoterm_cac = 0
+                line.incoterm_cac = line.origin_expenses
 
     @api.depends('cac_cant', 'incoterm_cac')
     def _compute_intern_price(self):
