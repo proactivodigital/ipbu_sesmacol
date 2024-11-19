@@ -49,7 +49,7 @@ class IPBUProductLine(models.Model):
     discount = fields.Float(string='Descuento', compute='_compute_discount', default="0.0", required=False, store=True, readonly=False, tracking=True)
     category = fields.Text(string='Category', store=True, tracking=True, required=False, readonly=False, compute='_compute_category')
 
-    @api.depends('origin_expenses', 'cost_custom', 'destination_expenses', 'ipbu_id.total_origin_expenses', 'ipbu_id.total_cost_custom', 'ipbu_id.total_destination_expenses')
+    @api.depends('ipbu_id.total_logistics_margin', 'ipbu_id.total_cost_custom', 'ipbu_id.total_destination_expenses', 'local_cant')
     def _compute_ponderado_incoterm(self):
         for line in self:
             total_logistics_margin = line.ipbu_id.total_logistics_margin
@@ -57,11 +57,15 @@ class IPBUProductLine(models.Model):
             total_destination_expenses = line.ipbu_id.total_destination_expenses
 
             total = total_logistics_margin + total_cost_custom + total_destination_expenses
-            divisor = sum(line.local_cant for line in line.ipbu_id.product_line_ids)
+            divisor = 0
+            for l in line.ipbu_id.product_line_ids:
+                divisor += l.local_cant
+                _logger.warning(l.local_cant)
+
             if total != 0 and divisor != 0:
                 _logger.warning(total)
-                _logger.warning(divisor)
                 _logger.warning(line.local_cant)
+                _logger.warning(divisor)
                 _logger.warning((total * line.local_cant) / divisor)
                 line.ponderado_incoterm = (total * line.local_cant) / divisor
             else:
