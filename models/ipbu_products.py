@@ -62,6 +62,7 @@ class IPBUProductLine(models.Model):
                 _logger.warning(total)
                 _logger.warning(divisor)
                 _logger.warning(line.local_cant)
+                _logger.warning((total * line.local_cant) / divisor)
                 line.ponderado_incoterm = (total * line.local_cant) / divisor
             else:
                 line.ponderado_incoterm = 0.0
