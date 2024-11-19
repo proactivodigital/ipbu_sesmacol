@@ -284,6 +284,7 @@ class IPBU(models.Model):
 
                         if (line.sale_qty_exw != 0 and total != 0):
                             line.ponderado_incoterm = (line.sale_qty_exw / total) * (1 - record.product_line_ids[0].ponderado_incoterm)
+    
     def action_view_quotation(self):
         self.ensure_one()
         if self.quotation_id:
