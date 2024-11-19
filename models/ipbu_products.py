@@ -132,6 +132,7 @@ class IPBUProductLine(models.Model):
                 line.local_utility = math.ceil(line.quotation_total * line.ipbu_id.local_utility)
                 _logger.warning(line.quotation_total)
                 _logger.warning(line.ipbu_id.local_utility)
+                _logger.warning(line.quotation_total * line.ipbu_id.local_utility)
 
     @api.depends('intern_price', 'product_qty', 'local_utility')
     def _compute_local(self):
