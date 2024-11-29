@@ -22,14 +22,16 @@ class CrmLead(models.Model):
             'context': {'default_lead_id': self.id},
         }
 
-    @api.model
+    @api.model 
     def create(self, vals):
-        if self.type == 'opportunity':
+        # Verificar si el tipo es 'opportunity'
+        if vals.get('type') == 'opportunity':
             current_year = datetime.now().year
             year_suffix = str(current_year)[-2:]
 
             sequence_code = f'crm.lead.code.{year_suffix}'
 
+            # Buscar o crear la secuencia
             seq = self.env['ir.sequence'].sudo().search([('code', '=', sequence_code)], limit=1)
             if not seq:
                 seq = self.env['ir.sequence'].sudo().create({
@@ -39,8 +41,9 @@ class CrmLead(models.Model):
                     'prefix': f'L{year_suffix}-',
                 })
 
-            new_code = self.env['ir.sequence'].next_by_code(sequence_code)
-
+            # Generar el código único
+            new_code = seq.next_by_id()
             vals['code'] = new_code
 
-            return super(CrmLead, self).create(vals)
+        # Llamar al método original para crear el registro
+        return super(CrmLead, self).create(vals)
