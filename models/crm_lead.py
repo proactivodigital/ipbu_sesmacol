@@ -22,28 +22,37 @@ class CrmLead(models.Model):
             'context': {'default_lead_id': self.id},
         }
 
-    @api.model 
+    @api.model
     def create(self, vals):
-        # Verificar si el tipo es 'opportunity'
+        # Generar el código solo si el tipo es 'opportunity'
         if vals.get('type') == 'opportunity':
-            current_year = datetime.now().year
-            year_suffix = str(current_year)[-2:]
-
-            sequence_code = f'crm.lead.code.{year_suffix}'
-
-            # Buscar o crear la secuencia
-            seq = self.env['ir.sequence'].sudo().search([('code', '=', sequence_code)], limit=1)
-            if not seq:
-                seq = self.env['ir.sequence'].sudo().create({
-                    'name': f'CRM Lead Sequence {year_suffix}',
-                    'code': sequence_code,
-                    'padding': 4,
-                    'prefix': f'L{year_suffix}-',
-                })
-
-            # Generar el código único
-            new_code = seq.next_by_id()
-            vals['code'] = new_code
-
-        # Llamar al método original para crear el registro
+            vals['code'] = self._generate_lead_code()
         return super(CrmLead, self).create(vals)
+
+    def _generate_lead_code(self):
+        """Genera el código único para oportunidades basándose en el año."""
+        current_year = datetime.now().year
+        year_suffix = str(current_year)[-2:]
+        sequence_code = f'crm.lead.code.{year_suffix}'
+
+        # Buscar o crear la secuencia
+        seq = self.env['ir.sequence'].sudo().search([('code', '=', sequence_code)], limit=1)
+        if not seq:
+            seq = self.env['ir.sequence'].sudo().create({
+                'name': f'CRM Lead Sequence {year_suffix}',
+                'code': sequence_code,
+                'padding': 4,
+                'prefix': f'L{year_suffix}-',
+            })
+
+        return seq.next_by_id()
+
+    def convert_opportunity(self, partner_id, user_ids=False, team_id=False):
+        """Sobrescribir para generar el código al convertir a oportunidad."""
+        result = super(CrmLead, self).convert_opportunity(partner_id, user_ids=user_ids, team_id=team_id)
+
+        for lead in self:
+            if lead.type == 'opportunity' and not lead.code:
+                lead.code = lead._generate_lead_code()
+
+        return result
