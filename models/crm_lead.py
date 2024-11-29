@@ -24,22 +24,23 @@ class CrmLead(models.Model):
 
     @api.model
     def create(self, vals):
-        current_year = datetime.now().year
-        year_suffix = str(current_year)[-2:]
+        if self.type == 'opportunity':
+            current_year = datetime.now().year
+            year_suffix = str(current_year)[-2:]
 
-        sequence_code = f'crm.lead.code.{year_suffix}'
+            sequence_code = f'crm.lead.code.{year_suffix}'
 
-        seq = self.env['ir.sequence'].sudo().search([('code', '=', sequence_code)], limit=1)
-        if not seq:
-            seq = self.env['ir.sequence'].sudo().create({
-                'name': f'CRM Lead Sequence {year_suffix}',
-                'code': sequence_code,
-                'padding': 4,
-                'prefix': f'L{year_suffix}-',
-            })
+            seq = self.env['ir.sequence'].sudo().search([('code', '=', sequence_code)], limit=1)
+            if not seq:
+                seq = self.env['ir.sequence'].sudo().create({
+                    'name': f'CRM Lead Sequence {year_suffix}',
+                    'code': sequence_code,
+                    'padding': 4,
+                    'prefix': f'L{year_suffix}-',
+                })
 
-        new_code = self.env['ir.sequence'].next_by_code(sequence_code)
+            new_code = self.env['ir.sequence'].next_by_code(sequence_code)
 
-        vals['code'] = new_code
+            vals['code'] = new_code
 
-        return super(CrmLead, self).create(vals)
+            return super(CrmLead, self).create(vals)
