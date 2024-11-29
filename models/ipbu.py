@@ -107,7 +107,6 @@ class IPBU(models.Model):
                 'product_id': product_line.product_id.id,  # Producto de la línea del IPBU
                 'product_uom_qty': product_line.product_qty,  # Cantidad del producto
                 'price_unit': product_line.quotation_total,  # Precio de venta (usando EXW)
-                'name': product_description,  # Descripción del producto
                 'tax_id': [(6, 0, product_line.product_id.taxes_id.ids)],  # Impuestos del producto
             }
             SaleOrderLine.create(order_line_vals)
