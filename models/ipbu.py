@@ -24,7 +24,7 @@ class IPBU(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     lead_id = fields.Many2one('crm.lead', string='Lead/Oportunidad', tracking=True, required=True)
-    product_line_ids = fields.One2many('ipbu.product.line', 'ipbu_id', string='Líneas de Producto', tracking=True)
+    product_line_ids = fields.One2many('product.template', 'ipbu_id', string='Líneas de Producto', tracking=True)
 
     total_cost_cac = fields.Float(string='Costo CAC', required=False, readonly=True, store=True, compute='_compute_total_cost_cac')
     total_sale_exw = fields.Float(string='Venta EXW', required=False, readonly=True, store=True, compute='_compute_total_sale_exw')
