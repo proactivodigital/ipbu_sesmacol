@@ -10,7 +10,7 @@ class IPBUProductLine(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     ipbu_id = fields.Many2one('ipbu.ipbu', string='ipbu', required=False, ondelete='cascade')
-    product_id = fields.Many2one('sale.order.line', string='Producto', required=False)
+    product_id = fields.Many2one('product.template', string='Producto', required=False)
     product_qty = fields.Float(string='Cantidad', required=False, store=True, tracking=True)
     product_cost = fields.Float(string='Costo producto', required=False, store=True, tracking=True)
     product_description = fields.Text(string='Descripción', store=True, tracking=True, compute='_compute_description')
