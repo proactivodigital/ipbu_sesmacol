@@ -1,170 +1,194 @@
 <odoo>
-    <record id="view_ipbu_form" model="ir.ui.view">
-        <field name="name">ipbu.ipbu.form</field>
-        <field name="model">ipbu.ipbu</field>
-        <field name="arch" type="xml">
-            <form string="Sales Order" class="o_sale_order" delete="False">
-                <header>
-                    <field name="has_quotation" invisible="1"/>
-                    
-                    <button string="Activar" type="object" name="action_confirm" class="oe_highlight"/>
-                    <button string="Inactivar" type="object" name="action_cancel" class="btn btn-secondary"/>
-                    <button string="Crear Cotización" type="object" name="action_convert_to_quotation" class="oe_highlight" invisible="1 if has_quotation else 0"/>
+    <data>
+        <!-- Define a form view for the ipbu.ipbu model -->
+        <record id="view_ipbu_form" model="ir.ui.view">
+            <field name="name">ipbu.ipbu.form</field> <!-- Name of the view -->
+            <field name="model">ipbu.ipbu</field> <!-- Model this view will apply to -->
+            <field name="arch" type="xml"> <!-- View's architecture (UI layout) -->
+                <form string="Sales Order" class="o_sale_order" delete="False">
+                    <!-- Form header with action buttons -->
+                    <header>
+                        <field name="has_quotation" invisible="1"/> <!-- Field to check if a quotation exists, hidden -->
 
-                    <field name="status" widget="statusbar" statusbar_visible="inactive,active"/>
-                </header>
-                <sheet>
-                    <div class="oe_button_box" name="button_box">
-                        <button class="oe_stat_button" name="action_view_quotation" type="object" icon="fa-pencil-square-o" invisible="0 if has_quotation else 1">
-                            <span>Cotizacion 1</span>
-                        </button>
+                        <!-- Buttons for confirming, canceling, and converting to quotation -->
+                        <button string="Activar" type="object" name="action_confirm" class="oe_highlight"/>
+                        <button string="Inactivar" type="object" name="action_cancel" class="btn btn-secondary"/>
+                        <button string="Crear Cotización" type="object" name="action_convert_to_quotation" class="oe_highlight" invisible="1 if has_quotation else 0"/>
+                        
+                        <!-- Status field with a status bar for different states -->
+                        <field name="status" widget="statusbar" statusbar_visible="inactive,active"/>
+                    </header>
+
+                    <!-- Main form content -->
+                    <sheet>
+                        <!-- Button box with actions for viewing quotations -->
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="action_view_quotation" type="object" icon="fa-pencil-square-o" invisible="0 if has_quotation else 1">
+                                <span>Cotizacion 1</span>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <h3>
+                                <!-- Display code (readonly) and name (editable) -->
+                                <field name="code" readonly="1" field_id="name_0" invisible="1"/>
+                                <field name="name" nolabel="1" field_id="name_1"/>
+                            </h3>
+                        </div>
+
+                        <!-- Grouped fields under different categories -->
+                        <group>
+                            <group>
+                                <!-- Lead, companies, and version details -->
+                                <field name="lead_id" string="Lead/Oportunidad" context="{'search_default_code': 1}"/>
+                                <field name="companies"/>
+                                <field name="version"/>
+                            </group>
+                            <group>
+                                <!-- Lead code, invoices company, area, and supplier details -->
+                                <field name="lead_code"/>
+                                <field name="invoices_company"/>
+                                <field name="area"/>
+                                <field name="principal_supplier"/>
+                            </group>
+                        </group>
+
+                        <!-- Distribution section for cost-related fields -->
+                        <group string="Distribucion">
+                            <group>
+                                <field name="total_cost_cac"/>
+                                <field name="total_sale_exw"/>
+                                <field name="utility_cac"/>
+                                <field name="invoice_cac"/>
+                                <field name="total_ddp"/>
+                            </group>
+                            <group>
+                                <!-- Date, expenses, and custom cost fields -->
+                                <field name="date" string="Fecha"/>
+                                <field name="total_origin_expenses" readonly="1 if category == 'Equipos' else 0"/>
+                                <field name="total_cost_custom" readonly="1 if category == 'Equipos' else 0"/>
+                                <field name="total_destination_expenses" readonly="1 if category == 'Equipos' else 0"/>
+                                <field name="total_logistics_margin"/>
+                            </group>
+                        </group>
+
+                        <!-- IPBU Information section with various fields -->
+                        <group string="Información del ipbu">
+                            <group>
+                                <field name="category"/>
+                                <field name="margin" widget="percentage"/>
+                            </group>
+                            <group>
+                                <field name="line_discount" widget="percentage"/>
+                                <field name="local_utility" widget="percentage"/>
+                            </group>
+                        </group>
+
+                        <!-- Notebook widget with multiple pages of detailed product lines -->
+                        <notebook>
+                            <page string="Información General" name="bottom">
+                                <field name="product_line_ids" nolabel="1" widget="section_and_note_one2many" mode="tree,kanban">
+                                    <tree editable="bottom" limit="200">
+                                        <!-- Fields related to the general information of the product lines -->
+                                        <field name="product_id"/>
+                                        <field name="supplier"/>
+                                        <field name="product_description"/>
+                                        <field name="product_qty" />
+                                        <field name="product_cost" />
+                                        <field name="local_buy" />
+                                        <field name="delivery_time" />
+                                        <field name="discount" widget="percentage"/>
+                                        <field name="real_margin" widget="percentage"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <!-- Additional pages for different product line categories -->
+                            <page string="Gastos de Envío">
+                                <field name="product_line_ids" nolabel="1" widget="section_and_note_one2many" mode="tree,kanban">
+                                    <tree editable="bottom" limit="200">
+                                        <field name="product_id"/>
+                                        <field name="category" column_invisible="1"/>
+                                        <field name="origin_expenses" readonly="0 if category == 'Equipos' else 1"/>
+                                        <field name="cost_custom" readonly="0 if category == 'Equipos' else 1"/>
+                                        <field name="destination_expenses" readonly="0 if category == 'Equipos' else 1"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Ganancias">
+                                <field name="product_line_ids" nolabel="1" widget="section_and_note_one2many" mode="tree,kanban">
+                                    <tree editable="bottom" limit="200">
+                                        <field name="product_id"/>
+                                        <field name="cost_qty" />
+                                        <field name="cost" />
+                                        <field name="sale_exw" />
+                                        <field name="sale_qty_exw" />
+                                        <field name="ponderado_incoterm" widget="percentage" />
+                                        <field name="logistic_margin" />
+                                        <field name="DDP_value" />
+                                        <field name="quotation_total" />
+                                        <field name="utility" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Local">
+                                <field name="product_line_ids" nolabel="1" widget="section_and_note_one2many" mode="tree,kanban">
+                                    <tree editable="bottom" limit="200">
+                                        <field name="product_id"/>
+                                        <field name="local_utility" />
+                                        <field name="local" />
+                                        <field name="local_cant" />
+                                        <field name="local_incoterm" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="CAC">
+                                <field name="product_line_ids" nolabel="1" widget="section_and_note_one2many" mode="tree,kanban">
+                                    <tree editable="bottom" limit="200">
+                                        <field name="product_id"/>
+                                        <field name="utility_cac" />
+                                        <field name="cac" />
+                                        <field name="cac_cant" />
+                                        <field name="incoterm_cac" />
+                                        <field name="intern_price" />
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Cliente">
+                                <field name="product_line_ids" nolabel="1" widget="section_and_note_one2many" mode="tree,kanban">
+                                    <tree editable="bottom" limit="200">
+                                        <field name="product_id"/>
+                                        <field name="total_customer" />
+                                        <field name="DDP_unit" />
+                                        <field name="DDP_total" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+
+                    <!-- Chatter section for messages and activities -->
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids"/>
                     </div>
-                    <div class="oe_title">
-                        <h3>
-                            <field name="code" readonly="1" field_id="name_0" invisible="1"/>
-                            <field name="name" nolabel="1" field_id="name_1"/>
-                        </h3>
-                    </div>
-                    <group>
-                        <group>
-                            <field name="lead_id" string="Lead/Oportunidad" context="{'search_default_code': 1}"/>
-                            <field name="companies"/>
-                            <field name="version"/>
-                        </group>
-                        <group>
-                            <field name="lead_code"/>
-                            <field name="invoices_company"/>
-                            <field name="area"/>
-                            <field name="principal_supplier"/>
-                        </group>
-                    </group>
+                </form>
+            </field>
+        </record>
 
-                    <group string="Distribucion">
-                        <group>
-                            <field name="total_cost_cac"/>
-                            <field name="total_sale_exw"/>
-                            <field name="utility_cac"/>
-                            <field name="invoice_cac"/>
-                            <field name="total_ddp"/>
-                        </group>
-                        <group>
-                            <field name="date" string="Fecha"/>
-                            <field name="total_origin_expenses" readonly="1 if category == 'Equipos' else 0"/>
-                            <field name="total_cost_custom" readonly="1 if category == 'Equipos' else 0"/>
-                            <field name="total_destination_expenses" readonly="1 if category == 'Equipos' else 0"/>
-                            <field name="total_logistics_margin"/>
-                        </group>
-                    </group>
-
-                    <group string="Información del ipbu">
-                        <group>
-                            <field name="category"/>
-                            <field name="margin" widget="percentage"/>
-                        </group>
-                        <group>
-                            <field name="line_discount" widget="percentage"/>
-                            <field name="local_utility" widget="percentage"/>
-                        </group>
-                    </group>
-
-                    <notebook>
-                        <page string="Información General" name="bottom">
-                            <field name="product_line_ids" nolabel="1" widget="section_and_note_one2many" mode="tree,kanban">
-                                <tree editable="bottom" limit="200">
-                                    <field name="product_id"/>
-                                    <field name="supplier"/>
-                                    <field name="product_description"/>
-                                    <field name="product_qty" />
-                                    <field name="product_cost" />
-                                    <field name="local_buy" />
-                                    <field name="delivery_time" />
-                                    <field name="discount" widget="percentage"/>
-                                    <field name="real_margin" widget="percentage"/>
-                                </tree>
-                            </field>
-                        </page>
-                        <page string="Gastos de Envío">
-                            <field name="product_line_ids" nolabel="1" widget="section_and_note_one2many" mode="tree,kanban">
-                                <tree editable="bottom" limit="200">
-                                    <field name="product_id"/>
-                                    <field name="category" column_invisible="1"/>
-                                    <field name="origin_expenses" readonly="0 if category == 'Equipos' else 1"/>
-                                    <field name="cost_custom" readonly="0 if category == 'Equipos' else 1"/>
-                                    <field name="destination_expenses" readonly="0 if category == 'Equipos' else 1"/>
-                                </tree>
-                            </field>
-                        </page>
-                        <page string="Ganancias">
-                            <field name="product_line_ids" nolabel="1" widget="section_and_note_one2many" mode="tree,kanban">
-                                <tree editable="bottom" limit="200">
-                                    <field name="product_id"/>
-                                    <field name="cost_qty" />
-                                    <field name="cost" />
-                                    <field name="sale_exw" />
-                                    <field name="sale_qty_exw" />
-                                    <field name="ponderado_incoterm" widget="percentage" />
-                                    <field name="logistic_margin" />
-                                    <field name="DDP_value" />
-                                    <field name="quotation_total" />
-                                    <field name="utility" />
-                                </tree>
-                            </field>
-                        </page>
-                        <page string="Local">
-                            <field name="product_line_ids" nolabel="1" widget="section_and_note_one2many" mode="tree,kanban">
-                                <tree editable="bottom" limit="200">
-                                    <field name="product_id"/>
-                                    <field name="local_utility" />
-                                    <field name="local" />
-                                    <field name="local_cant" />
-                                    <field name="local_incoterm" />
-                                </tree>
-                            </field>
-                        </page>
-                        <page string="CAC">
-                            <field name="product_line_ids" nolabel="1" widget="section_and_note_one2many" mode="tree,kanban">
-                                <tree editable="bottom" limit="200">
-                                    <field name="product_id"/>
-                                    <field name="utility_cac" />
-                                    <field name="cac" />
-                                    <field name="cac_cant" />
-                                    <field name="incoterm_cac" />
-                                    <field name="intern_price" />
-                                </tree>
-                            </field>
-                        </page>
-                        <page string="Cliente">
-                            <field name="product_line_ids" nolabel="1" widget="section_and_note_one2many" mode="tree,kanban">
-                                <tree editable="bottom" limit="200">
-                                    <field name="product_id"/>
-                                    <field name="total_customer" />
-                                    <field name="DDP_unit" />
-                                    <field name="DDP_total" />
-                                </tree>
-                            </field>
-                        </page>
-                    </notebook>
-                </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids"/>
-                    <field name="activity_ids"/>
-                    <field name="message_ids"/>
-                </div>
-            </form>
-        </field>
-    </record>
-
-    <record id="view_ipbu_tree" model="ir.ui.view">
-        <field name="name">ipbu.ipbu.tree</field>
-        <field name="model">ipbu.ipbu</field>
-        <field name="arch" type="xml">
-            <tree>
-                <field name="name" string="Nombre"/>
-                <field name="lead_id" string="Lead/Oportunidad"/>
-                <field name="date" string="Fecha"/>
-                <field name="status" string="Estado" widget="badge" decoration-success="status == 'active'" decoration-danger="status == 'inactive'"/>
-            </tree>
-        </field>
-    </record>
+        <!-- Define a tree view for the ipbu.ipbu model -->
+        <record id="view_ipbu_tree" model="ir.ui.view">
+            <field name="name">ipbu.ipbu.tree</field> <!-- Name of the view -->
+            <field name="model">ipbu.ipbu</field> <!-- Model this view will apply to -->
+            <field name="arch" type="xml"> <!-- Tree view architecture -->
+                <tree>
+                    <!-- Columns to display in the tree view -->
+                    <field name="name" string="Nombre"/>
+                    <field name="lead_id" string="Lead/Oportunidad"/>
+                    <field name="date" string="Fecha"/>
+                    <!-- Status field with conditional styling based on status -->
+                    <field name="status" string="Estado" widget="badge" decoration-success="status == 'active'" decoration-danger="status == 'inactive'"/>
+                </tree>
+            </field>
+        </record>
+    </data>
 </odoo>
-   

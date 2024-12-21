@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
+        <!-- Define a record that modifies the sale.order tree view (list view) -->
         <record id="view_crm_lead_tree_inherit" model="ir.ui.view">
+            
+            <!-- The name of the view that is being defined. 
+                 This name is used internally to identify the view. -->
             <field name="name">sale.view_quotation_tree_with_onboarding_inherit</field>
+            
+            <!-- The model that this view will modify. In this case, it's the 'sale.order' model 
+                 which represents sale orders in Odoo. -->
             <field name="model">sale.order</field>
+            
+            <!-- Reference to the original view being inherited. 
+                 The view with the ID 'sale.view_quotation_tree_with_onboarding' is being modified. -->
             <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+            
             <field name="arch" type="xml">
-                <!-- Localizamos el campo 'name' para reemplazarlo -->
+                <!-- Use XPath to find the 'name' field in the original view and replace it -->
                 <xpath expr="//field[@name='name']" position="replace">
-                    <!-- Cambiamos el campo por 'code' con los mismos atributos -->
+                    <!-- Replace the 'name' field with the 'code' field and add additional attributes -->
                     <field name="code" string="Número" readonly="1" decoration-bf="1"/>
                 </xpath>
             </field>

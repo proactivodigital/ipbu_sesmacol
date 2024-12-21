@@ -1,25 +1,26 @@
 <odoo>
     <data>
-        <!-- Acción para abrir el modelo de ipbu -->
+        <!-- Define an action to open the ipbu model -->
         <record id="action_ipbu" model="ir.actions.act_window">
-            <field name="name">ipbu</field>
-            <field name="res_model">ipbu.ipbu</field> <!-- Reemplaza con el nombre técnico de tu modelo -->
-            <field name="view_mode">tree,form</field>
+            <field name="name">ipbu</field> <!-- Name of the action, visible in the UI -->
+            <field name="res_model">ipbu.ipbu</field> <!-- Technical name of the model (ipbu.ipbu) -->
+            <field name="view_mode">tree,form</field> <!-- Define view modes (tree and form views) -->
         </record>
 
+        <!-- Action to view ipbu based on a related lead -->
         <record id="action_view_ipbu" model="ir.actions.act_window">
-            <field name="name">IPBU</field>
-            <field name="res_model">ipbu.ipbu</field>
-            <field name="view_mode">tree,form</field>
-            <field name="domain">[('lead_id', '=', active_id)]</field>
+            <field name="name">IPBU</field> <!-- Name of the action -->
+            <field name="res_model">ipbu.ipbu</field> <!-- Technical name of the model -->
+            <field name="view_mode">tree,form</field> <!-- Define view modes (tree and form views) -->
+            <field name="domain">[('lead_id', '=', active_id)]</field> <!-- Domain filter to show records related to the current active lead -->
         </record>
 
-        <!-- Submenú de ipbu -->
+        <!-- Create a sub-menu for IPBU in the CRM menu -->
         <record id="menu_ipbu" model="ir.ui.menu">
-            <field name="name">IPBU</field> <!-- Nombre del submenú -->
-            <field name="parent_id" ref="crm.crm_menu_sales"/>
-            <field name="action" ref="action_ipbu"/> <!-- Acción a ejecutar al hacer clic en el submenú -->
-            <field name="sequence" eval="50"/> <!-- Orden en el que aparece en el menú -->
+            <field name="name">IPBU</field> <!-- Name of the sub-menu item -->
+            <field name="parent_id" ref="crm.crm_menu_sales"/> <!-- Parent menu, linking it to the CRM Sales menu -->
+            <field name="action" ref="action_ipbu"/> <!-- The action to be triggered when the menu item is clicked -->
+            <field name="sequence" eval="50"/> <!-- Position of the menu item in the list -->
         </record>
     </data>
 </odoo>

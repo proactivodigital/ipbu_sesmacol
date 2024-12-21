@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
+        <!-- Define a record that modifies the sale.order form view -->
         <record id="view_sale_view_order_form_inherit" model="ir.ui.view">
+            
+            <!-- The name of the view, this will be used to identify the view -->
             <field name="name">sale.view_order_form</field>
+            
+            <!-- The model that this view will modify (sale.order in this case) -->
             <field name="model">sale.order</field>
+            
+            <!-- Reference to the original view that is being inherited. 
+                 This ensures that the new view will extend the existing one. -->
             <field name="inherit_id" ref="sale.view_order_form"/>
+            
             <field name="arch" type="xml">
+                <!-- Using XPath to find and modify a specific part of the original view -->
                 <xpath expr="//div[@class='oe_title']/h1" position="replace">
+                    <!-- The new content that will replace the original h1 tag -->
                     <h1>
+                        <!-- The sale order name field (readonly and invisible) -->
                         <field name="name" readonly="1" invisible="1"/>
+                        
+                        <!-- The new field "code" is added to the form. -->
                         <field name="code" />
                     </h1>
                 </xpath>
