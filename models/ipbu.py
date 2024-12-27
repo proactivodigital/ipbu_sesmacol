@@ -2,10 +2,6 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 import math
 
-import logging
-
-_logger = logging.getLogger(__name__)
-
 class IPBU(models.Model):
     """
     This model represents an IPBU (Cost Sheet), with fields for tracking various costs, sales, and suppliers related to a lead.
@@ -265,8 +261,6 @@ class IPBU(models.Model):
                         line.is_first_product = True
                         line.utility_cac = math.ceil(utility_difference + local_utility_sum)
                         line.supplier = line.product_id.x_studio_product_supplier.display_name
-                        line.real_margin = self.margin
-                        line.discount = self.line_discount
 
                         if record.category != "Repuestos":
                             continue
@@ -280,8 +274,6 @@ class IPBU(models.Model):
                         line.is_first_product = False
                         line.utility_cac = math.ceil(line.utility - line.local_utility)
                         line.supplier = line.product_id.x_studio_product_supplier.display_name
-                        line.real_margin = self.margin
-                        line.discount = self.line_discount
 
                         if record.category != "Repuestos":
                             continue

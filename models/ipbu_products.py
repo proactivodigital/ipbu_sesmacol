@@ -1,8 +1,5 @@
 from odoo import models, fields, api
 import math
-import logging
-
-_logger = logging.getLogger(__name__)
 
 class IPBUProductLine(models.Model):
     # Defines the 'ipbu.product.line' model, representing a product line in IPBU (possibly an abbreviation for a specific business process).
@@ -66,12 +63,18 @@ class IPBUProductLine(models.Model):
             else:
                 line.ponderado_incoterm = 0.0
 
+    @api.depends('ipbu_id.margin')
     def _compute_real_margin(self):
-        """Computes the real margin."""
-        return
+        """Computes the real margin dynamically."""
+        for record in self:
+            if not record.real_margin:
+                record.real_margin = record.ipbu_id.margin
     
+    @api.depends('ipbu_id.line_discount')
     def _compute_discount(self):
-        """Computes the discount value."""
+        for record in self:
+            if not record.discount:
+                record.discount = record.ipbu_id.line_discount  
         return
 
     @api.depends('cost_custom', 'destination_expenses')
