@@ -42,6 +42,7 @@ class IPBU(models.Model):
     local_utility = fields.Float(string='Local Utility', tracking=True)
     invoice_cac = fields.Float(string='CAC Invoice', readonly=True, store=True, compute='_compute_total_invoice_cac')
     utility_cac = fields.Float(string='CAC Utility', readonly=True, store=True, compute='_compute_total_utility_cac')
+    incoterm_lead = fields.One2many('account.incoterms', string='Incoterm', store=True, compute='_compute_incoterm')
     
     # Category and Supplier Information
     category = fields.Selection([('Repuestos', 'Parts'), ('Equipos', 'Equipment')], string='Category', default='Equipos', tracking=True)
@@ -225,6 +226,13 @@ class IPBU(models.Model):
             if record.lead_id:
                 record.principal_supplier = record.lead_id.x_studio_main_supplier.x_studio_abbreviation
         return 
+    
+    @api.depends('lead_id')
+    def _compute_incoterm(self):
+        for record in self:
+            return
+        return
+
 
     # Overridden methods for creating and writing records
     @api.model

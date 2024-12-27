@@ -42,6 +42,7 @@
                                 <field name="lead_id" string="Lead/Oportunidad" context="{'search_default_code': 1}"/>
                                 <field name="companies"/>
                                 <field name="version"/>
+                                <field name="incoterm_lead"/>
                             </group>
                             <group>
                                 <!-- Lead code, invoices company, area, and supplier details -->
