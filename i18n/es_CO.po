@@ -1,0 +1,715 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* ipbu_sesmacol
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-12-27 14:19+0000\n"
+"PO-Revision-Date: 2024-12-27 14:19+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.crm_lead_view_form_inherit_ipbu
+msgid "<span class=\"o_stat_text\">IPBU</span>"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_form
+msgid "<span>Cotizacion 1</span>"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__message_needaction
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_form
+msgid "Activar"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields.selection,name:ipbu_sesmacol.selection__ipbu_ipbu__status__active
+msgid "Active"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__activity_ids
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__activity_exception_decoration
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__activity_state
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__activity_type_icon
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__area
+msgid "Area"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__message_attachment_count
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__margin
+msgid "Base Margin"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__cac
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_form
+msgid "CAC"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__total_cost_cac
+msgid "CAC Cost"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__companies
+msgid "CAC Group"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__invoice_cac
+msgid "CAC Invoice"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__utility_cac
+msgid "CAC Utility"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__cac_cant
+msgid "CAC per Quantity"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__category
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__category
+msgid "Category"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_form
+msgid "Cliente"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_crm_lead__code
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_sale_order__code
+msgid "Code"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__code
+msgid "Cost Sheet Code"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.constraint,message:ipbu_sesmacol.constraint_ipbu_ipbu_code_unique
+msgid "Cost sheet code must be unique."
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_form
+msgid "Crear Cotización"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__create_uid
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__create_date
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__total_cost_custom
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__cost_custom
+msgid "Custom Costs"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__DDP_total
+msgid "DDP Total"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__DDP_unit
+msgid "DDP Unit"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__DDP_value
+msgid "DDP Unit Value"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__date
+msgid "Date"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__product_description
+msgid "Description"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__total_destination_expenses
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__destination_expenses
+msgid "Destination Expenses"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__discount
+msgid "Discount"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__display_name
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_form
+msgid "Distribucion"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__total_sale_exw
+msgid "EXW Sale"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__sale_exw
+msgid "EXW Sale Price"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__sale_qty_exw
+msgid "EXW Sale Price per Quantity"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields.selection,name:ipbu_sesmacol.selection__ipbu_ipbu__category__equipos
+msgid "Equipment"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_tree
+msgid "Estado"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__delivery_time
+msgid "Factory Delivery Time"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_form
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_tree
+msgid "Fecha"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__message_follower_ids
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__message_partner_ids
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_ipbu__activity_type_icon
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_product_line__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_form
+msgid "Ganancias"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_form
+msgid "Gastos de Envío"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__has_message
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__id
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__id
+msgid "ID"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.actions.act_window,name:ipbu_sesmacol.action_view_ipbu
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__ipbu_id
+#: model:ir.ui.menu,name:ipbu_sesmacol.menu_ipbu
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.crm_lead_view_form_inherit_ipbu
+msgid "IPBU"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_crm_lead__ipbu_count
+msgid "IPBU Count"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model,name:ipbu_sesmacol.model_ipbu_ipbu
+msgid "IPBU Model"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__name
+msgid "IPBU Name"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.constraint,message:ipbu_sesmacol.constraint_ipbu_ipbu_name_unique
+msgid "IPBU name must be unique."
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__activity_exception_icon
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_ipbu__activity_exception_icon
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_product_line__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_ipbu__message_needaction
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_product_line__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_ipbu__message_has_error
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_ipbu__message_has_sms_error
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_product_line__message_has_error
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_product_line__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_form
+msgid "Inactivar"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields.selection,name:ipbu_sesmacol.selection__ipbu_ipbu__status__inactive
+msgid "Inactive"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__incoterm_cac
+msgid "Incoterm CAC"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__local_incoterm
+msgid "Incoterm Value"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__ponderado_incoterm
+msgid "Incoterm Weight"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_form
+msgid "Información General"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_form
+msgid "Información del ipbu"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__intern_price
+msgid "Internal Invoice Price"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__invoices_company
+msgid "Invoicing Company"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__is_first_product
+msgid "Is First Product"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__message_is_follower
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__message_is_follower
+msgid "Is Follower"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__write_uid
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__write_date
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_form
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_tree
+msgid "Lead/Oportunidad"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model,name:ipbu_sesmacol.model_crm_lead
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__lead_id
+msgid "Lead/Opportunity"
+msgstr "Lead/oportunidad"
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__line_discount
+msgid "Line Discount"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_form
+msgid "Local"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__local_buy
+msgid "Local Purchase?"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__local_utility
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__local_utility
+msgid "Local Utility"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__local
+msgid "Local Value"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__local_cant
+msgid "Local Value per Quantity"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__logistic_margin
+msgid "Logistic Margin"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__total_logistics_margin
+msgid "Logistics Margin"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__message_has_error
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__message_ids
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__message_ids
+msgid "Messages"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__my_activity_date_deadline
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__activity_calendar_event_id
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__activity_date_deadline
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__activity_summary
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__activity_type_id
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields.selection,name:ipbu_sesmacol.selection__ipbu_product_line__local_buy__no
+msgid "No"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_tree
+msgid "Nombre"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__message_needaction_counter
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__message_has_error_counter
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__message_has_error_counter
+msgid "Number of errors"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_ipbu__message_needaction_counter
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_product_line__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_ipbu__message_has_error_counter
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_product_line__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_crm_lead_tree_inherit
+msgid "Número"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__lead_code
+msgid "Opportunity Code"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__total_origin_expenses
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__origin_expenses
+msgid "Origin Expenses"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields.selection,name:ipbu_sesmacol.selection__ipbu_ipbu__category__repuestos
+msgid "Parts"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__product_id
+msgid "Product"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__product_cost
+msgid "Product Cost"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model,name:ipbu_sesmacol.model_ipbu_product_line
+msgid "Product Line in IPBU"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__product_line_ids
+msgid "Product Lines"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__product_qty
+msgid "Quantity"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__quotation_id
+msgid "Quotation"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__has_quotation
+msgid "Quotation Created"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__quotation_total
+msgid "Quotation Total"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__real_margin
+msgid "Real Margin"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__activity_user_id
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__message_has_sms_error
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model,name:ipbu_sesmacol.model_sale_order
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.view_ipbu_form
+msgid "Sales Order"
+msgstr "Orden de venta"
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__status
+msgid "Status"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_ipbu__activity_state
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_product_line__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__principal_supplier
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__supplier
+msgid "Supplier"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__cost_qty
+msgid "Total Cost"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__total_customer
+msgid "Total Customer Value"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__total_ddp
+msgid "Total DDP"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_ipbu__activity_exception_decoration
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_product_line__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__cost
+msgid "Unit Cost"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__utility
+msgid "Utility"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__utility_cac
+msgid "Utility (CAC)"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__version
+msgid "Version"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.crm_lead_view_form_inherit_ipbu
+msgid "View IPBU"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_ipbu__website_message_ids
+#: model:ir.model.fields,field_description:ipbu_sesmacol.field_ipbu_product_line__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_ipbu__website_message_ids
+#: model:ir.model.fields,help:ipbu_sesmacol.field_ipbu_product_line__website_message_ids
+msgid "Website communication history"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.model.fields.selection,name:ipbu_sesmacol.selection__ipbu_product_line__local_buy__yes
+msgid "Yes"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model_terms:ir.ui.view,arch_db:ipbu_sesmacol.crm_lead_view_form_inherit_ipbu
+msgid "e.g. Product Pricing"
+msgstr ""
+
+#. module: ipbu_sesmacol
+#: model:ir.actions.act_window,name:ipbu_sesmacol.action_ipbu
+msgid "ipbu"
+msgstr ""
