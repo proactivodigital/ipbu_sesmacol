@@ -233,7 +233,6 @@ class IPBU(models.Model):
             if record.lead_id:
                 record.incoterm_lead = record.lead_id.x_studio_incoterm_1
 
-
     # Overridden methods for creating and writing records
     @api.model
     def create(self, vals):
