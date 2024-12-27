@@ -265,4 +265,4 @@ class IPBUProductLine(models.Model):
     def _compute_description(self):
         for record in self:
             if record.product_id:
-                record.description = record.product_id.display_name
+                record.product_description = record.product_id.display_name
