@@ -261,7 +261,7 @@ class IPBUProductLine(models.Model):
             else:
                 line.category = 'Repuestos'
 
-    @api.depends('product_id', 'product_template_id')
+    @api.depends('product_id')
     def _compute_description(self):
         for record in self:
             if record.product_id:
