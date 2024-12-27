@@ -117,7 +117,7 @@
                             <page string="Ganancias">
                                 <field name="product_line_ids" nolabel="1" widget="section_and_note_one2many" mode="tree,kanban">
                                     <tree editable="bottom" limit="200">
-                                        <field name="product_id" domain="[('sale_ok', '=', True)]" context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}" readonly="not product_updatable" required="not display_type" force_save="1" widget="many2one_barcode"/>
+                                        <field name="product_id" domain="[('sale_ok', '=', True)]" context="{'partner_id':parent.partner_id, 'quantity':product_uom_qty, 'pricelist':parent.pricelist_id, 'uom':product_uom, 'company_id': parent.company_id}" force_save="1" widget="many2one_barcode"/>
                                         <field name="cost_qty" />
                                         <field name="cost" />
                                         <field name="sale_exw" />
