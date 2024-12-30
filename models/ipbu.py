@@ -225,12 +225,22 @@ class IPBU(models.Model):
     def create(self, vals):
         record = super(IPBU, self).create(vals)
         record._update_first_product_flag()
+        record.discount_values()
         return record
 
     def write(self, vals):
         result = super(IPBU, self).write(vals)
         self._update_first_product_flag()
         return result
+    
+    @api.onchange('product_line_ids')
+    def discount_values(self):
+        for record in self:
+            if record.product_line_ids:
+                for index, line in enumerate(record.product_line_ids):
+                    line.discount = line.discount if line.discount else self.line_discount
+                    line.real_margin = line.real_margin if line.real_margin else self.margin
+
 
     @api.onchange('product_line_ids')
     def _update_first_product_flag(self):
@@ -253,8 +263,6 @@ class IPBU(models.Model):
                         line.is_first_product = True
                         line.utility_cac = math.ceil(utility_difference + local_utility_sum)
                         line.supplier = line.product_id.x_studio_product_supplier.display_name
-                        line.real_margin = self.margin
-                        line.discount = self.line_discount
 
                         if record.category != "Repuestos":
                             continue
@@ -268,8 +276,6 @@ class IPBU(models.Model):
                         line.is_first_product = False
                         line.utility_cac = math.ceil(line.utility - line.local_utility)
                         line.supplier = line.product_id.x_studio_product_supplier.display_name
-                        line.real_margin = self.margin
-                        line.discount = self.line_discount
                         
                         if record.category != "Repuestos":
                             continue
