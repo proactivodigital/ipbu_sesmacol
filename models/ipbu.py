@@ -34,8 +34,8 @@ class IPBU(models.Model):
     invoice_cac = fields.Float(string='Factura CAC', required=False, readonly=True, store=True, compute='_compute_total_invoice_cac')
     utility_cac = fields.Float(string='Utilidad CAC', required=False, readonly=True, store=True, compute='_compute_total_utility_cac')
     category = fields.Selection([
-        ('1', 'Repuestos'),
-        ('2', 'Equipos'),
+        ('Repuestos', 'Repuestos'),
+        ('Equipos', 'Equipos'),
     ], string='Categoria', required=False, default='Equipos', tracking=True)
     companies = fields.Many2one('res.partner', string='CAC Group', tracking=True, required=True, domain=[('x_studio_cac_group', '=', True)])
     area = fields.Text(string='Area', store=True, tracking=True, compute='_compute_area')
