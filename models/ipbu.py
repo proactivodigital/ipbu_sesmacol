@@ -2,10 +2,6 @@ from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 import math
 
-import logging
-
-_logger = logging.getLogger(__name__)
-
 class IPBU(models.Model):
     _name = 'ipbu.ipbu'
     _description = 'Modelo de ipbu'
@@ -25,7 +21,6 @@ class IPBU(models.Model):
 
     lead_id = fields.Many2one('crm.lead', string='Lead/Oportunidad', tracking=True, required=True)
     product_line_ids = fields.One2many('ipbu.product.line', 'ipbu_id', string='Líneas de Producto', tracking=True)
-
     total_cost_cac = fields.Float(string='Costo CAC', required=False, readonly=True, store=True, compute='_compute_total_cost_cac')
     total_sale_exw = fields.Float(string='Venta EXW', required=False, readonly=True, store=True, compute='_compute_total_sale_exw')
     total_origin_expenses = fields.Float(string='Gastos origen', required=False, store=True, compute='_compute_total_origin_expenses')
@@ -47,7 +42,7 @@ class IPBU(models.Model):
     principal_supplier = fields.Text(string='Proveedor', store=True, tracking=True, compute='_compute_principal_supplier')
     version = fields.Integer(string='Version', required=True, readonly=False, store=True, default="0")
     invoices_company = fields.Text(string='Empresa que factura', store=True, tracking=True, compute='_compute_invoices_company')
- 
+    incoterm_lead = fields.Many2one('account.incoterms', string='Incoterm', store=True, compute='_compute_incoterm', readonly=False)
     status = fields.Selection([
         ('active', 'Activo'),
         ('inactive', 'Inactivo'),
@@ -76,7 +71,6 @@ class IPBU(models.Model):
 
         if ipbu_activo:
             raise ValidationError("Esta oportunidad ya tiene una cotización Activa, primero se debe desactivar para poder activar la actual")
-            return
 
         self.status = 'active'
 
@@ -94,13 +88,13 @@ class IPBU(models.Model):
             'origin': self.code,  # Usamos el código del IPBU como referencia
             'state': 'draft',  # Estado inicial como borrador
             'opportunity_id': self.lead_id.id,
-            'code': self.name
+            'code': self.name,
+            'incoterm': self.l
         }
         sale_order = SaleOrder.create(order_vals)
 
         # Creamos las líneas de la cotización usando los productos del IPBU
         for product_line in self.product_line_ids:
-            product_description = product_line.product_description
 
             order_line_vals = {
                 'order_id': sale_order.id,  # Asignamos la cotización creada
