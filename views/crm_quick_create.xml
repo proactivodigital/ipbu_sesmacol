@@ -31,14 +31,22 @@
 
                 <!-- Eliminar el campo 'email_from' -->
                 <xpath expr="//field[@name='email_from']" position="replace">
+                    <field name="email_from" string="Email" placeholder="e.g. &quot;email@address.com&quot;" invisible="1"/>
                     <field name="x_studio_line" string="Linea"/>
                 </xpath>
                 
                 <!-- Eliminar el campo 'phone' -->
                 <xpath expr="//field[@name='phone']" position="replace">
+                    <field name="phone" string="Phone" placeholder="e.g. &quot;0123456789&quot;" invisible="1"/>
                     <field name="x_studio_area" string="Area"/>
                 </xpath>
-
+                
+                <!-- Eliminar el campo 'expected_revenue' -->
+                <xpath expr="//field[@name='expected_revenue']" position="replace">
+                    <field name="expected_revenue" class="oe_inline me-5 o_field_highlight" widget="monetary" options="{'currency_field': 'company_currency'}" invisible="1"/>
+                    <field name="description" placeholder="Requerimiento" options="{'collaborative': true}"/>
+                </xpath>
+                
                 <!-- Eliminar el campo 'priority' -->
                 <xpath expr="//field[@name='priority']" position="replace">
                     <field name="priority" class="oe_inline" nolabel="1" widget="priority" invisible="1"/>
