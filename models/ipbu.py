@@ -89,7 +89,7 @@ class IPBU(models.Model):
             'state': 'draft',  # Estado inicial como borrador
             'opportunity_id': self.lead_id.id,
             'code': self.name,
-            'incoterm': self.l
+            'incoterm': self.incoterm_lead
         }
         sale_order = SaleOrder.create(order_vals)
 
