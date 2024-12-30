@@ -61,7 +61,6 @@ class IPBU(models.Model):
     def action_confirm(self):
         if not self.lead_id:
             raise ValidationError("La oportunidad asignada a este IPBU no existe.")
-            return
 
         ipbu_activo = self.search([
             ('lead_id', '=', self.lead_id.id),
@@ -120,6 +119,12 @@ class IPBU(models.Model):
             'res_id': sale_order.id,
             'target': 'current',  # Se abre en la vista actual
         }
+    
+    @api.depends('lead_id')
+    def _compute_incoterm(self):
+        for record in self:
+            if record.lead_id:
+                record.incoterm_lead = record.lead_id.x_studio_incoterm_1
 
     @api.depends('product_line_ids')
     def _compute_totals(self):
