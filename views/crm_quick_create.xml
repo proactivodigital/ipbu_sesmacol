@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Extender la vista crm.quick_create_opportunity_form -->
+        <record id="view_quick_create_opportunity_form_inherit" model="ir.ui.view">
+            <field name="name">crm.quick_create_opportunity_form.inherit</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_quick_create_opportunity_form"/>
+            <field name="arch" type="xml">
+                <!-- Eliminar el campo 'partner_id' -->
+                <xpath expr="//field[@name='partner_id']" position="replace">
+                    <field name="partner_id" 
+                        widget="res_partner_many2one" 
+                        class="o_field_highlight" 
+                        string="Organization / Contact" 
+                        context="{
+                            'res_partner_search_mode': type == 'opportunity' and 'customer' or False,
+                            'default_name': contact_name or partner_name,
+                            'default_is_company': False,
+                            'default_company_name': type == 'opportunity' and partner_name,
+                            'default_type': 'contact',
+                            'default_phone': phone,
+                            'default_email': email_from,
+                            'default_user_id': user_id,
+                            'default_team_id': team_id,
+                            'search_default_filter_person': True,
+                            'show_vat': True
+                        }"
+                    />
+                </xpath>
+
+                <!-- Eliminar el campo 'email_from' -->
+                <xpath expr="//field[@name='email_from']" position="replace">
+                    <field name="email_from" string="Email" placeholder="e.g. &quot;email@address.com&quot;" invisible="1"/>
+                </xpath>
+                
+                <!-- Eliminar el campo 'phone' -->
+                <xpath expr="//field[@name='phone']" position="replace">
+                    <field name="phone" string="Phone" placeholder="e.g. &quot;0123456789&quot;" invisible="1"/>
+                </xpath>
+                
+                <!-- Eliminar el campo 'expected_revenue' -->
+                <xpath expr="//field[@name='expected_revenue']" position="replace">
+                    <field name="expected_revenue" class="oe_inline me-5 o_field_highlight" widget="monetary" options="{'currency_field': 'company_currency'}" invisible="1"/>
+                </xpath>
+                
+                <!-- Eliminar el campo 'priority' -->
+                <xpath expr="//field[@name='priority']" position="replace">
+                    <field name="priority" class="oe_inline" nolabel="1" widget="priority" invisible="1"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

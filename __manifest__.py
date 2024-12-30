@@ -26,6 +26,7 @@
         "views/crm_lead_kanban.xml",  # Kanban view for visualizing CRM leads.
         "views/sale_order.xml",  # Views for managing sale orders with cost information.
         "views/sale_order_kanban.xml",  # Kanban-style view for managing sale orders.
+        "views/crm_quick_create.xml"
     ],
     
     # The following configurations:
