@@ -8,7 +8,7 @@ class CrmLead(models.Model):
     ipbu_count = fields.Integer(string="IPBU Count", compute='_compute_ipbu_count')
 
     # A unique code for each lead, generated when the lead type is 'opportunity'.
-    code = fields.Char(string='Code', readonly=False, copy=False, index=True, unique=False)  # Cambié unique=True por unique=False
+    code = fields.Char(string='Automatic Code', readonly=False, copy=False, index=True, unique=False)  # Cambié unique=True por unique=False
 
     # Computes the count of IPBUs related to each CRM lead.
     def _compute_ipbu_count(self):
