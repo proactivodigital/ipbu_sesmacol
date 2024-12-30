@@ -60,18 +60,17 @@ class IPBUProductLine(models.Model):
             else:
                 line.ponderado_incoterm = 0.0
 
-    @api.depends('ipbu_id.margin')
+    @api.depends('real_margin')
     def _compute_real_margin(self):
         """Computes the real margin dynamically."""
         for record in self:
-            if not record.real_margin:
-                record.real_margin = record.ipbu_id.margin
+            record.real_margin = record.real_margin
+        return
     
-    @api.depends('ipbu_id.line_discount')
+    @api.depends('discount')
     def _compute_discount(self):
         for record in self:
-            if not record.discount:
-                record.discount = record.ipbu_id.line_discount  
+            record.discount = record.discount
         return
 
     @api.depends('cost_custom', 'destination_expenses')
