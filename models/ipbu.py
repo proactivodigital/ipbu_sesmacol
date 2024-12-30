@@ -42,7 +42,7 @@ class IPBU(models.Model):
     principal_supplier = fields.Text(string='Proveedor', store=True, tracking=True, compute='_compute_principal_supplier')
     version = fields.Integer(string='Version', required=True, readonly=False, store=True, default="0")
     invoices_company = fields.Text(string='Empresa que factura', store=True, tracking=True, compute='_compute_invoices_company')
-    incoterm_lead = fields.Many2one('account.incoterms', string='Incoterm', store=True, compute='_compute_incoterm', readonly=False)
+    incoterm_lead = fields.Many2one('account.incoterms', string='Incoterm', store=True, compute='_compute_incoterm', readonly=False, required=True)
     status = fields.Selection([
         ('active', 'Activo'),
         ('inactive', 'Inactivo'),
@@ -89,7 +89,7 @@ class IPBU(models.Model):
             'state': 'draft',  # Estado inicial como borrador
             'opportunity_id': self.lead_id.id,
             'code': self.name,
-            'incoterm': self.incoterm_lead
+            'incoterm': self.incoterm_lead.id
         }
         sale_order = SaleOrder.create(order_vals)
 
