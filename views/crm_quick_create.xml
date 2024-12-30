@@ -3,9 +3,9 @@
     <data>
         <!-- Extender la vista crm.quick_create_opportunity_form -->
         <record id="view_quick_create_opportunity_form_inherit" model="ir.ui.view">
-            <field name="name">crm.quick_create_opportunity_form.inherit</field>
+            <field name="name">crm.quick_create_opportunity_form</field>
             <field name="model">crm.lead</field>
-            <field name="inherit_id" ref="crm.crm_quick_create_opportunity_form"/>
+            <field name="inherit_id" ref="crm.quick_create_opportunity_form"/>
             <field name="arch" type="xml">
                 <!-- Eliminar el campo 'partner_id' -->
                 <xpath expr="//field[@name='partner_id']" position="replace">
