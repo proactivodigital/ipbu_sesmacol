@@ -38,15 +38,20 @@
                 <xpath expr="//field[@name='phone']" position="replace">
                     <field name="x_studio_area" string="Area"/>
                 </xpath>
-                
-                <!-- Eliminar el campo 'expected_revenue' -->
-                <xpath expr="//field[@name='expected_revenue']" position="replace">
-                    <field name="description" placeholder="Requerimiento" options="{'collaborative': true}"/>
-                </xpath>
-                
+
                 <!-- Eliminar el campo 'priority' -->
                 <xpath expr="//field[@name='priority']" position="replace">
                     <field name="priority" class="oe_inline" nolabel="1" widget="priority" invisible="1"/>
+                </xpath>
+
+                <!-- Eliminar el campo 'recurring_revenue' -->
+                <xpath expr="//field[@name='recurring_revenue']" position="replace">
+                    <field name="recurring_revenue" class="oe_inline o_field_highlight" widget="monetary" options="{'currency_field': 'company_currency'}" invisible="1"/>
+                </xpath>
+
+                <!-- Eliminar el campo 'recurring_plan' -->
+                <xpath expr="//field[@name='recurring_plan']" position="replace">
+                    <field name="recurring_plan" class="oe_inline" placeholder="e.g. &quot;Monthly&quot;" required="recurring_revenue != 0" options="{'no_create': True, 'no_open': True}" invisible="1"/>
                 </xpath>
             </field>
         </record>
