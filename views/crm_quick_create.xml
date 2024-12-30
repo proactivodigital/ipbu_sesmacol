@@ -44,7 +44,7 @@
                 <!-- Eliminar el campo 'expected_revenue' -->
                 <xpath expr="//field[@name='expected_revenue']" position="replace">
                     <field name="expected_revenue" class="oe_inline me-5 o_field_highlight" widget="monetary" options="{'currency_field': 'company_currency'}" invisible="1"/>
-                    <field name="description" placeholder="Requerimiento" options="{'collaborative': true}"/>
+                    <field name="description" placeholder="Requerimiento" options="{'collaborative': true}" class="oe_inline me-5 o_field_highlight"/>
                 </xpath>
                 
                 <!-- Eliminar el campo 'priority' -->
