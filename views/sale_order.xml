@@ -26,6 +26,29 @@
                         <field name="code" />
                     </h1>
                 </xpath>
+
+                <field name="picking_policy" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </field>
+
+                <label for="commitment_date" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </label>
+
+                <xpath expr="//div[@name='commitment_date_div']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <field name="incoterm_location" position="after">
+                    <field name="incoterm_age"/>
+                    <div>
+                        <field name="delivery_time"/>
+                        <span>
+                            a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas.
+                        </span>
+                    </div>
+
+                </field>
             </field>
         </record>
     </data>
