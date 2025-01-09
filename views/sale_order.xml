@@ -32,10 +32,6 @@
                 <xpath expr="//field[@name='commitment_date']" position="replace">
                     <field name="commitment_date" readonly="state == 'cancel' or locked" invisible="1"/>
                 </xpath>
-
-                <xpath expr="//span[@name='expected_date_span']" position="replace">
-                    <span name="expected_date_span" class="text-muted d-none">Expected: <field name="expected_date" class="oe_inline" widget="date"/></span>
-                </xpath>
             </field>
         </record>
     </data>
