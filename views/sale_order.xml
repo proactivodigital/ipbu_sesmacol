@@ -30,7 +30,7 @@
 
                 <field name="incoterm_location" position="after">
                     <field name="incoterm_age"/>
-                    <div>
+                    <div class="d-flex flex-row justify-content-center align-items-center">
                         <field name="delivery_time"/>
                         <span>
                             a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas.
