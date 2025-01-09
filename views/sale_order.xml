@@ -8,7 +8,6 @@
 
             <!-- The model that this view will modify -->
             <field name="model">sale.order</field>
-            <field name="sequence">18</field>
 
             <!-- Reference to the original view that is being inherited -->
             <field name="inherit_id" ref="sale.view_order_form"/>
