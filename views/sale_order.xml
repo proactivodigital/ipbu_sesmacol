@@ -4,7 +4,7 @@
         <!-- Define a record that modifies the sale.order form view -->
         <record id="view_sale_view_order_form_inherit" model="ir.ui.view">
             <!-- The name of the view -->
-            <field name="name">sale.view_order_form</field>
+            <field name="name">sale.view_order_form_ipbu</field>
 
             <!-- The model that this view will modify -->
             <field name="model">sale.order</field>
