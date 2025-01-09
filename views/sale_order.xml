@@ -26,7 +26,7 @@
                 </xpath>
 
                 <!-- Add the fields after the 'incoterm_location' field -->
-                <xpath expr="//field[@name='incoterm_location']" position="after">
+                <xpath expr="//div[@name='commitment_date_div']" position="after">
                     <div class="oe_structure"/>
                     <div class="row">
                         <div class="col-12">
