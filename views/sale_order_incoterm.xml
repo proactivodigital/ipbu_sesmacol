@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- Define a record that modifies the sale.order form view -->
+        <record id="view_sale_view_order_form_inherit" model="ir.ui.view">
+            <!-- The name of the view -->
+            <field name="name">sale_stock.view_order_form_inherit_sale_stock_ipbu</field>
+
+            <!-- The model that this view will modify -->
+            <field name="model">sale.order</field>
+
+            <!-- Reference to the original view that is being inherited -->
+            <field name="inherit_id" ref="sale_stock.view_order_form_inherit_sale_stock"/>
+
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='incoterm_location']" position="after">
+                    <div class="oe_structure"/>
+                    <div class="row">
+                        <div class="col-12">
+                            <field name="delivery_time"/>
+                        </div>
+                        <div class="col-12">
+                            <span>
+                                a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas.
+                            </span>
+                        </div>
+                    </div>
+
+                    <field name="incoterm_age"/>    
+                    <field name="policy_delivery"/>
+                    <field name="valid"/>
+                    <field name="warranty"/>
+                    <field name="extended"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
