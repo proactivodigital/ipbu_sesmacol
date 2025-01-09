@@ -15,8 +15,12 @@ class SaleOrder(models.Model):
     )
 
     delivery_time = fields.Char(string='Tiempo de Entrega', required=True)
-    incoterm_age = fields.Integer(string='Año del Incoterm', required=True)
-    policy_delivery = fields.Char(string='Tiempo de Entrega', required=True, compute='_compute_policy_delivery', store=True)
+    incoterm_age = fields.Char(string='Año del Incoterm', required=True)
+    policy_delivery = fields.Char(string='Terminos de entrega', required=True, compute='_compute_policy_delivery', store=True)
+    policy_pay = fields.Text(string='Año del Incoterm', required=True)
+    warranty = fields.Text(string='Garantía', required=True)
+    extended = fields.Text(string='Extendida', required=True)
+    valid    = fields.Char(string='Validez', required=True)
     
     @api.depends('incoterm', 'incoterm_location', 'incoterm_age')
     def _compute_policy_delivery(self):
