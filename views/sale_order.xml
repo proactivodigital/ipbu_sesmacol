@@ -3,17 +3,15 @@
     <data>
         <!-- Define a record that modifies the sale.order form view -->
         <record id="view_sale_view_order_form_inherit" model="ir.ui.view">
-            
-            <!-- The name of the view, this will be used to identify the view -->
+            <!-- The name of the view -->
             <field name="name">sale.view_order_form</field>
-            
-            <!-- The model that this view will modify (sale.order in this case) -->
+
+            <!-- The model that this view will modify -->
             <field name="model">sale.order</field>
-            
-            <!-- Reference to the original view that is being inherited. 
-                 This ensures that the new view will extend the existing one. -->
+
+            <!-- Reference to the original view that is being inherited -->
             <field name="inherit_id" ref="sale.view_order_form"/>
-            
+
             <field name="arch" type="xml">
                 <!-- Using XPath to find and modify a specific part of the original view -->
                 <xpath expr="//div[@class='oe_title']/h1" position="replace">
@@ -22,22 +20,29 @@
                         <!-- The sale order name field (readonly and invisible) -->
                         <field name="name" readonly="1" invisible="1"/>
                         
-                        <!-- The new field "code" is added to the form. -->
-                        <field name="code" />
+                        <!-- The new field "code" is added to the form -->
+                        <field name="code"/>
                     </h1>
                 </xpath>
 
-
-                <field name="incoterm_location" position="after">
+                <!-- Add the fields after the 'incoterm_location' field -->
+                <xpath expr="//field[@name='incoterm_location']" position="after">
                     <field name="delivery_time"/>
                     <field name="incoterm_age"/>
-                    <div class="d-flex flex-row justify-content-center align-items-center">
-                        <field name="policy_delivery"/>
-                        <span>
-                            a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas.
-                        </span>
+
+                    <!-- Custom layout for displaying 'policy_delivery' and text -->
+                    <div class="oe_structure"/>
+                    <div class="row">
+                        <div class="col-12">
+                            <field name="policy_delivery"/>
+                        </div>
+                        <div class="col-12">
+                            <span>
+                                a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas.
+                            </span>
+                        </div>
                     </div>
-                </field>
+                </xpath>
             </field>
         </record>
     </data>
