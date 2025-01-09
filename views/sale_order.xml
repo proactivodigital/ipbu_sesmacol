@@ -29,14 +29,14 @@
 
 
                 <field name="incoterm_location" position="after">
+                    <field name="delivery_time"/>
                     <field name="incoterm_age"/>
                     <div class="d-flex flex-row justify-content-center align-items-center">
-                        <field name="delivery_time"/>
+                        <field name="policy_delivery"/>
                         <span>
                             a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas.
                         </span>
                     </div>
-                    <field name="policy_delivery"/>
                 </field>
             </field>
         </record>
