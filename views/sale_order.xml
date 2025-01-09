@@ -24,12 +24,12 @@
                         <field name="code"/>
                     </h1>
                 </xpath>
-
+                
                 <xpath expr="//label[@for='commitment_date']" position="replace">
                     <label for="commitment_date" string="Delivery Date" class="d-none"/>
                 </xpath>
 
-                <xpath expr="//div[contains(@class, 'commitment_date')]" position="replace">
+                <xpath expr="//div[@name='commitment_date_div']" position="replace">
                     <div name="commitment_date_div" class="o_row d-none">
                         <field name="commitment_date" readonly="state == 'cancel' or locked"/>
                         <span name="expected_date_span" class="text-muted">Expected: <field name="expected_date" class="oe_inline" widget="date"/></span>
