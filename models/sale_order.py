@@ -18,7 +18,6 @@ class SaleOrder(models.Model):
     incoterm_age = fields.Integer(string='Edad del Incoterm', required=True)
     policy_delivery = fields.Char(string='Tiempo de Entrega', required=True, compute='_compute_policy_delivery', store=True)
     
-
     @api.depends('incoterm', 'incoterm_location', 'incoterm_age')
     def _compute_policy_delivery(self):
         for record in self:

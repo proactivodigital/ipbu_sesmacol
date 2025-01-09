@@ -27,6 +27,7 @@
                     </h1>
                 </xpath>
 
+
                 <field name="incoterm_location" position="after">
                     <field name="incoterm_age"/>
                     <div>
@@ -35,7 +36,7 @@
                             a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas.
                         </span>
                     </div>
-
+                    <field name="policy_delivery"/>
                 </field>
             </field>
         </record>
