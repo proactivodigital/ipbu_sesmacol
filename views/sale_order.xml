@@ -27,7 +27,7 @@
 
                 <!-- Add the fields after the 'incoterm_location' field -->
                 <xpath expr="//field[@name='incoterm_location']" position="after">
-                    <!-- Custom layout for displaying 'policy_delivery' and text -->
+                    <field name="incoterm_location" field_id="incoterm_location_0"/>
                     <div class="oe_structure"/>
                     <div class="row">
                         <div class="col-12">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
 
-                    <field name="incoterm_age"/>
+                    <field name="incoterm_age"/>    
                     <field name="policy_delivery"/>
                     <field name="valid"/>
                     <field name="warranty"/>
