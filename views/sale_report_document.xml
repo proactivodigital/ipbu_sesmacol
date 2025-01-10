@@ -8,6 +8,7 @@
                 <xpath expr="//span[t-field='doc.name']" position="replace">
                     <span t-field="doc.code">SO0000</span>
                 </xpath>
+            </field>
         </record>
     </data>
 </odoo>
