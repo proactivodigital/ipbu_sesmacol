@@ -17,10 +17,10 @@
                 <xpath expr="//div[@class='oe_title']/h1" position="replace">
                     <h1>
                         <!-- El campo 'name' debe existir en el modelo sale.order -->
-                        <field name="name" readonly="1"/>
+                        <field name="name" readonly="1" invisible="1"/>
                         
                         <!-- Asegúrate de que 'code' también esté definido -->
-                        <field name="code" attrs="{'readonly': [('state', '=', 'done')]}"/>
+                        <field name="code" readonly="state == 'done'"/>
                     </h1>
                 </xpath>
 
@@ -30,9 +30,8 @@
                 </xpath>
 
                 <!-- Hacer que el campo 'commitment_date' sea solo lectura o invisible -->
-                <xpath expr="//field[@name='commitment_date']" position="attributes">
-                    <attribute name="readonly">state == 'cancel' or locked</attribute>
-                    <attribute name="invisible">1</attribute>
+                <xpath expr="//field[@name='commitment_date']" position="replace">
+                    <field name="commitment_date" readonly="state == 'cancel' or locked" invisible="1"/>
                 </xpath>
             </field>
         </record>
