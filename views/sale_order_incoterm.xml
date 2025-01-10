@@ -18,7 +18,17 @@
                     <field name="date_to"/>
                     <field name="policy_delivery"/>
 
-                    <field name="valid" nolabel="0"/><span>Dias</span>
+                    <div class="row">
+                        <div class="col-3">
+                            <label for="valid">Validez</label>
+                        </div>
+                        <div class="col-3">
+                            <field name="valid"/>
+                        </div>
+                        <div class="col-3">
+                            <span>Dias</span>
+                        </div>
+                    </div>
 
                     <field name="warranty"/>
                     <field name="extended"/>
