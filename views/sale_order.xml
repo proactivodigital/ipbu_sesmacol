@@ -4,7 +4,7 @@
         <!-- Define a record that modifies the sale.order form view -->
         <record id="view_sale_view_order_form_inherit" model="ir.ui.view">
             <!-- The name of the view -->
-            <field name="name">sale.view_order_form</field>
+            <field name="name">sale.view_order_form.inherit</field>
 
             <!-- The model that this view will modify -->
             <field name="model">sale.order</field>
@@ -13,24 +13,26 @@
             <field name="inherit_id" ref="sale.view_order_form"/>
 
             <field name="arch" type="xml">
-                <!-- Using XPath to find and modify a specific part of the original view -->
+                <!-- Modificar el título de la vista -->
                 <xpath expr="//div[@class='oe_title']/h1" position="replace">
-                    <!-- The new content that will replace the original h1 tag -->
                     <h1>
-                        <!-- The sale order name field (readonly and invisible) -->
-                        <field name="name" readonly="1" invisible="1"/>
+                        <!-- El campo 'name' debe existir en el modelo sale.order -->
+                        <field name="name" readonly="1"/>
                         
-                        <!-- The new field "code" is added to the form -->
-                        <field name="code"/>
+                        <!-- Asegúrate de que 'code' también esté definido -->
+                        <field name="code" attrs="{'readonly': [('state', '=', 'done')]}"/>
                     </h1>
                 </xpath>
 
+                <!-- Cambiar el label del campo 'commitment_date' -->
                 <xpath expr="//label[@for='commitment_date']" position="replace">
-                    <label for="commitment_date" string="Delivery Date" class="d-none"/>
+                    <label for="commitment_date" string="Delivery Date"/>
                 </xpath>
 
-                <xpath expr="//field[@name='commitment_date']" position="replace">
-                    <field name="commitment_date" readonly="state == 'cancel' or locked" invisible="1"/>
+                <!-- Hacer que el campo 'commitment_date' sea solo lectura o invisible -->
+                <xpath expr="//field[@name='commitment_date']" position="attributes">
+                    <attribute name="readonly">state == 'cancel' or locked</attribute>
+                    <attribute name="invisible">1</attribute>
                 </xpath>
             </field>
         </record>
