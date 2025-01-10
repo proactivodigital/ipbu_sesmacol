@@ -30,8 +30,11 @@
                 </xpath>
 
                 <!-- Hacer que el campo 'commitment_date' sea solo lectura o invisible -->
-                <xpath expr="//field[@name='commitment_date']" position="replace">
-                    <field name="commitment_date" readonly="state == 'cancel' or locked" invisible="1"/>
+                <xpath expr="//div[@name='commitment_date_div']" position="replace">
+                    <div name="commitment_date_div" class="o_row" invisible="1" style="display: none !important;">
+                        <field name="commitment_date" readonly="state == 'cancel' or locked" invisible="1"/>
+                        <span style="display: none !important;" name="expected_date_span" invisible="1" class="text-muted d-none">Expected: <field name="expected_date" class="oe_inline" widget="date" invisible="1"/></span>
+                    </div>
                 </xpath>
             </field>
         </record>
