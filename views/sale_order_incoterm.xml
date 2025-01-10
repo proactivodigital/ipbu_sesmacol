@@ -15,17 +15,8 @@
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='incoterm_location']" position="after">
                     <div class="oe_structure"/>
-                    <div class="row">
-                        <div class="col-12">
-                            <field name="delivery_time"/>
-                        </div>
-                        <div class="col-12">
-                            <span>
-                                a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas.
-                            </span>
-                        </div>
-                    </div>
-
+                    <field name="date_from"/>
+                    <field name="date_to"/>
                     <field name="incoterm_age"/>    
                     <field name="policy_delivery" nolabel="1"/>
                     
