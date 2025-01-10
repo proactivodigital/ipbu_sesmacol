@@ -16,16 +16,18 @@
                 <xpath expr="//field[@name='incoterm_location']" position="after">
                     <field name="date_from"/>
                     <field name="date_to"/>
-                    <field name="policy_delivery" nolabel="1"/>
-                    
                     <div class="row">
                         <div class="col-12">
+                            <field name="policy_delivery" nolabel="1"/>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
                             <field name="valid"/>
                         </div>
-                        <div class="col-12">
-                            <span>
-                                Dias
-                            </span>
+                        <div class="col-6">
+                            <span>Dias</span>
                         </div>
                     </div>
                     
