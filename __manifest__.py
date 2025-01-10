@@ -30,6 +30,7 @@
         "views/crm_quick_create.xml",
         "views/sale_order_incoterm.xml",
         'views/sale_report_document.xml',
+        'sale_order_stock_inherit.xml'
     ],
     
     # The following configurations:
