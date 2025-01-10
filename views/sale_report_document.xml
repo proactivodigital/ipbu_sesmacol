@@ -1,7 +1,7 @@
 <odoo>
     <!-- Vista QWeb personalizada para el reporte -->
     <template id="report_sale_order_custom">
-        Vista personalziada
+        Vista personalizada
     </template>
 
     <report 
@@ -9,7 +9,7 @@
         model="sale.order"
         string="Reporte de Cotización Personalizado"
         report_type="qweb-pdf"
-        name="ipbu.report_sale_order_custom"
-        file="ipbu.report_sale_order_custom"
+        name="ipbu_sesmacol.report_sale_order_custom"
+        file="ipbu_sesmacol.report_sale_order_custom"
         print_report_name="'Cotización - ' + object.name" />
 </odoo>
