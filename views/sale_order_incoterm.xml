@@ -14,7 +14,6 @@
 
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='incoterm_location']" position="after">
-                    <div class="oe_structure"/>
                     <field name="date_from"/>
                     <field name="date_to"/>
                     <field name="policy_delivery" nolabel="1"/>
