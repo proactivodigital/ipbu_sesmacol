@@ -14,18 +14,18 @@ class SaleOrder(models.Model):
         required=True  # Makes this field mandatory when creating or editing a record
     )
 
-    delivery_time = fields.Char(string='Tiempo de Entrega', required=True)
-    incoterm_age = fields.Char(string='Año del Incoterm', required=True)
-    policy_delivery = fields.Char(string='Terminos de entrega', compute='_compute_policy_delivery', store=True)
+    date_from = fields.Integer(string='Tiempo de Entrega minimo', required=True)
+    date_to = fields.Integer(string='Tiempo de Entrega maximo', required=True)
+    policy_delivery = fields.Char(string='Términos de entrega', compute='_compute_policy_delivery', store=True)
     policy_pay = fields.Text(string='Año del Incoterm', required=True)
     warranty = fields.Text(string='Garantía', required=True)
-    extended = fields.Text(string='Extendida', required=True)
-    valid    = fields.Char(string='Validez', required=True)
+    extended = fields.Text(string='Nota', required=True)
+    valid    = fields.Integer(string='Validez', required=True)
     
-    @api.depends('incoterm', 'incoterm_location', 'incoterm_age')
+    @api.depends('incoterm', 'incoterm_location')
     def _compute_policy_delivery(self):
         for record in self:
             if record.incoterm and record.incoterm_location and record.incoterm_age:
-                record.policy_delivery = f"{record.incoterm.code}, {record.incoterm_location}, Según incoterms {record.incoterm_age}"
+                record.policy_delivery = f"{record.incoterm.code}, {record.incoterm_location}, Según incoterms® 2020"
             else:
                 record.policy_delivery = ""

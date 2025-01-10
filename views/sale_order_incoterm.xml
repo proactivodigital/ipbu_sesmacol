@@ -27,10 +27,33 @@
                     </div>
 
                     <field name="incoterm_age"/>    
-                    <field name="policy_delivery"/>
-                    <field name="valid"/>
+                    <field name="policy_delivery" nolabel="1"/>
+                    
+                    <div class="row">
+                        <div class="col-12">
+                            <field name="valid"/>
+                        </div>
+                        <div class="col-12">
+                            <span>
+                                Dias
+                            </span>
+                        </div>
+                    </div>
+                    
                     <field name="warranty"/>
                     <field name="extended"/>
+                </xpath>
+
+                <xpath expr="//field[@name='picking_policy']" position="replace">
+                    <field name="picking_policy" required="True" readonly="state not in ['draft', 'sent']" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//div[@name='commitment_date_div']" position="replace">
+                    <div class="o_row d-none">
+                        <field name="commitment_date" invisible="1"/>
+                        <span class="text-muted" invisible="1">Expected: <field name="expected_date" class="oe_inline" widget="date"/></span>
+                    </div>
+                    <field name="effective_date" invisible="1"/>
                 </xpath>
             </field>
         </record>

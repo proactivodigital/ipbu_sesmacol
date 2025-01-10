@@ -99,7 +99,7 @@ class IPBU(models.Model):
                 'order_id': sale_order.id,  # Asignamos la cotización creada
                 'product_id': product_line.product_id.id,  # Producto de la línea del IPBU
                 'product_uom_qty': product_line.product_qty,  # Cantidad del producto
-                'price_unit': product_line.quotation_total / product_line.product_qty,  # Precio de venta (usando EXW)
+                'price_unit': product_line.DDP_value,  # Precio de venta (usando EXW)
                 'tax_id': [(6, 0, product_line.product_id.taxes_id.ids)],  # Impuestos del producto
             }
             SaleOrderLine.create(order_line_vals)

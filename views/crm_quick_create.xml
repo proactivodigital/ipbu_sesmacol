@@ -13,6 +13,7 @@
                         widget="res_partner_many2one" 
                         class="o_field_highlight" 
                         string="Organization / Contact" 
+                        domain="[('is_company', '=', False)]"
                         context="{
                             'res_partner_search_mode': type == 'opportunity' and 'customer' or False,
                             'default_name': contact_name or partner_name,
