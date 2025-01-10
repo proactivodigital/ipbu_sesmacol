@@ -17,19 +17,7 @@
                     <field name="date_from"/>
                     <field name="date_to"/>
                     <field name="policy_delivery"/>
-
-                    <div class="row">
-                        <div class="col-6">
-                            <label for="valid">Validez</label>
-                        </div>
-                        <div class="col-6">
-                            <field name="valid"/>
-                        </div>
-                        <div class="col-6">
-                            <span>Dias</span>
-                        </div>
-                    </div>
-
+                    <field name="valid"/>
                     <field name="warranty"/>
                     <field name="extended"/>
                 </xpath>
