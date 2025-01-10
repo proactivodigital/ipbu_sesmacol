@@ -1,14 +1,15 @@
 <odoo>
-    <data>
-        <record id="view_sale_order_report_inherit" model="ir.ui.view">
-            <field name="name">sale.report.saleorder.document.inherit</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.report_saleorder_document"/>
-            <field name="arch" type="xml">
-                <xpath expr="//span[t-field='doc.name']" position="replace">
-                    <span t-field="doc.code">SO0000</span>
-                </xpath>
-            </field>
-        </record>
-    </data>
+    <!-- Vista QWeb personalizada para el reporte -->
+    <template id="report_sale_order_custom">
+        Vista personalziada
+    </template>
+
+    <report 
+        id="action_sale_report_custom"
+        model="sale.order"
+        string="Reporte de Cotización Personalizado"
+        report_type="qweb-pdf"
+        name="ipbu.report_sale_order_custom"
+        file="ipbu.report_sale_order_custom"
+        print_report_name="'Cotización - ' + object.name" />
 </odoo>
