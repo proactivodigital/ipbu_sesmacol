@@ -22,14 +22,7 @@
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-6">
-                            <field name="valid"/>
-                        </div>
-                        <div class="col-6">
-                            <span>Dias</span>
-                        </div>
-                    </div>
+                    <field name="valid" nolabel="0"/><span>Dias</span>
                     
                     <field name="warranty"/>
                     <field name="extended"/>
