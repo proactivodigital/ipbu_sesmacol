@@ -25,7 +25,7 @@ class SaleOrder(models.Model):
     @api.depends('incoterm', 'incoterm_location')
     def _compute_policy_delivery(self):
         for record in self:
-            if record.incoterm and record.incoterm_location and record.incoterm_age:
+            if record.incoterm and record.incoterm_location:
                 record.policy_delivery = f"{record.incoterm.code}, {record.incoterm_location}, Según incoterms® 2020"
             else:
                 record.policy_delivery = ""
