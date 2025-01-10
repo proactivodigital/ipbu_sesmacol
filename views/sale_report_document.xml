@@ -1,0 +1,7 @@
+<odoo>
+    <template id="report_saleorder_document_custom" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//span[@t-field='doc.name']" position="attributes">
+            <attribute name="t-field">doc.code</attribute>
+        </xpath>
+    </template>
+</odoo>
