@@ -1,7 +1,13 @@
 <odoo>
-    <template id="report_saleorder_document_custom" inherit_id="sale.report_saleorder_document">
-        <xpath expr="//span[@t-field='doc.name']" position="attributes">
-            <attribute name="t-field">doc.code</attribute>
-        </xpath>
-    </template>
+    <data>
+        <record id="view_sale_order_report_inherit" model="ir.ui.view">
+            <field name="name">sale.report.saleorder.document.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.report_saleorder_document"/>
+            <field name="arch" type="xml">
+                <xpath expr="//span[t-field='doc.name']" position="replace">
+                    <span t-field="doc.code">SO0000</span>
+                </xpath>
+        </record>
+    </data>
 </odoo>
