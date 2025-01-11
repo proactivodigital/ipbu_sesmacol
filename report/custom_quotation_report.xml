@@ -183,7 +183,7 @@
                             <div>
                               <div class="d-flex w-100 justify-content-center align-items-center" style="font-size: 15px">
                                 <label>Tiempo de entrega: </label>
-                                <p><span t-field="doc.date_from"/> a <t t-field="doc.date_to" /> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </p>
+                                <p><span t-field="doc.date_from"/> a <span t-field="doc.date_to" /> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </p>
                               </div>
                               <div class="d-flex w-100 justify-content-center align-items-center" style="font-size: 15px">
                                 <label>Términos de entrega: </label>
