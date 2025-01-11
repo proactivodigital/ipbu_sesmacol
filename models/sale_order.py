@@ -17,7 +17,6 @@ class SaleOrder(models.Model):
     date_from = fields.Integer(string='Tiempo de Entrega minimo', required=True)
     date_to = fields.Integer(string='Tiempo de Entrega maximo', required=True)
     policy_delivery = fields.Char(string='Términos de entrega', compute='_compute_policy_delivery', store=True)
-    policy_pay = fields.Text(string='Año del Incoterm', required=True)
     warranty = fields.Text(string='Garantía', required=True)
     extended = fields.Text(string='Nota', required=True)
     valid    = fields.Integer(string='Validez', required=True)
