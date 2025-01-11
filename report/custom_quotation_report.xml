@@ -181,45 +181,34 @@
                           <div class="mt-20">
                             <h3>CONDICIONES COMERCIALES</h3>
                             <div>
-                              <div class="d-flex w-100 justify-content-center align-items-center">
+                              <div class="d-flex w-100 justify-content-center align-items-center" style="font-size: 15px">
                                 <label>Tiempo de entrega: </label>
-                                <span t-field="doc.date_from">36</span> <span> a </span> <span t-field="doc.date_to">38</span><span> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </span>
+                                <p t-field="doc.date_from">36</span> <span> a </span> <span t-field="doc.date_to">38</span><span> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </p>
                               </div>
-                              <div class="d-flex w-100 justify-content-center align-items-center" style="font-size: 20px">
+                              <div class="d-flex w-100 justify-content-center align-items-center" style="font-size: 15px">
                                 <label>Términos de entrega: </label>
                                 <span t-field="doc.policy_delivery"> FAS, México, Según incoterms® 2020</span>
                               </div>
-                              <div class="d-flex w-100 justify-content-center align-items-center">
+                              <div class="d-flex w-100 justify-content-center align-items-center" style="font-size: 15px">
                                 <label>Términos de pago: </label>
-                                <div>
-                                  30% con orden de compra; 30% primera entrega de dibujos de los compresores; 30% contra prueba de desempeño; 10% con aviso de despacho
-                                </div>
+                                30% con orden de compra; 30% primera entrega de dibujos de los compresores; 30% contra prueba de desempeño; 10% con aviso de despacho
                               </div>
-                              <div class="d-flex w-100 justify-content-center align-items-center">
+                              <div class="d-flex w-100 justify-content-center align-items-center" style="font-size: 15px">
                                 <label>Moneda: </label>
-                                <div>
-                                  <t t-esc="doc.currency_id.name"/>
-                                </div>
+                                <t t-esc="doc.currency_id.name"/>
                               </div>
-                              <div class="d-flex w-100 justify-content-center align-items-center">
+                              <div class="d-flex w-100 justify-content-center align-items-center" style="font-size: 15px">
                                 <label>Validez: </label>
-                                <div>
-                                  <span t-field="doc.valid">36</span> <span> Dias </span>
-                                </div>
+                                <span t-field="doc.valid">36</span> <span> Dias </span>
                               </div>
-                              <div class="d-flex w-100 justify-content-center align-items-center">
+                              <div class="d-flex w-100 justify-content-center align-items-center" style="font-size: 15px">
                                 <label>Garantía: </label>
-                                <div>
-                                  <span t-field="doc.warranty">36</span>
-                                </div>
+                                <span t-field="doc.warranty">36</span>
                               </div>
-                              <div class="d-flex w-100 justify-content-center align-items-center">
+                              <div class="d-flex w-100 justify-content-center align-items-center" style="font-size: 15px">
                                 <label>Nota: </label>
-                                <div>
-                                  <span t-field="doc.extended">36</span>
-                                </div>
+                                <span t-field="doc.extended">36</span>
                               </div>
-
                             </div>
                             <p style="color: red">*La orden de compra deberá ser dirigida a la empresa:</p>
                             <p style="color: red">SESMACOL SAS - CARRERA 43F 14A-116, MEDELLÍN, COLOMBIA - NIT 900420368-1</p>
