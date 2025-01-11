@@ -17,24 +17,24 @@
         <p>Fecha: <t t-esc="object.date_order"/></p>
         
         <table class="table table-sm table-striped">
-            <thead>
-                <tr>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Precio Unitario</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody>
-                <t t-foreach="object.order_line" t-as="line">
-                    <tr>
-                        <td><t t-esc="line.product_id.name"/></td>
-                        <td><t t-esc="line.product_uom_qty"/></td>
-                        <td><t t-esc="line.price_unit"/></td>
-                        <td><t t-esc="line.price_total"/></td>
-                    </tr>
-                </t>
-            </tbody>
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio Unitario</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <t t-foreach="object.order_line" t-as="line">
+              <tr>
+                <td><t t-esc="line.product_id.name"/></td>
+                <td><t t-esc="line.product_uom_qty"/></td>
+                <td><t t-esc="line.price_unit"/></td>
+                <td><t t-esc="line.price_total"/></td>
+              </tr>
+            </t>
+          </tbody>
         </table>
         <p>Total General: <t t-esc="object.amount_total"/> USD</p>
       </div>
