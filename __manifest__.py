@@ -31,9 +31,8 @@
         "views/crm_quick_create.xml",
         "views/sale_order_incoterm.xml",
         'views/sale_order_stock_inherit.xml',
-        'reports/custom_quotation_report.xml',
-        'reports/custom_quotation_template.xml',
-        'reports/override_report_sale.xml',
+        'report/custom_quotation_report.xml',
+        'report/custom_quotation_template.xml'
     ],
     
     # The following configurations:
