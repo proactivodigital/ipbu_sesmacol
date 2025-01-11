@@ -7,7 +7,6 @@
     name="ipbu_sesmacol.sale_report_sale_order_sesmacol"
     file="ipbu_sesmacol.sale_report_sale_order_sesmacol"
     print_report_name="'Cotización - %s' % (object.name)"
-    menu="True"
   />
 
   <template id="sale_report_sale_order_sesmacol">
