@@ -1,0 +1,11 @@
+<odoo>
+  <report 
+    id="action_report_custom_quotation_ipbu"
+    model="sale.order"
+    string="Cotización Personalizada IPBU Sesmacol"
+    report_type="qweb-pdf"
+    name="ipbu_sesmacol.report_custom_quotation_document"
+    file="ipbu_sesmacol.report_custom_quotation_document"
+    print_report_name="'Cotización - %s' % (object.name)"
+  />
+</odoo>

@@ -1,0 +1,5 @@
+<odoo>
+  <record id="sale.action_report_saleorder" model="ir.actions.report">
+    <field name="report_name">ipbu_sesmacol.report_custom_quotation_document</field>
+  </record>
+</odoo>

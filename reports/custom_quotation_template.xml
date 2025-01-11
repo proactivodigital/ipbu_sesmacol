@@ -1,0 +1,29 @@
+<odoo>
+  <template id="report_custom_quotation_document">
+    <t t-call="web.external_layout">
+      <div class="page">
+        <h2>IPBU Sesmacol - Cotización Personalizada</h2>
+        <p>Cliente: <t t-esc="doc.partner_id.name"/></p>
+        <p>Fecha: <t t-esc="doc.date_order"/></p>
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th>Producto</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+              <th>Subtotal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr t-foreach="doc.order_line" t-as="line">
+              <td><t t-esc="line.product_id.name"/></td>
+              <td><t t-esc="line.product_uom_qty"/></td>
+              <td><t t-esc="line.price_unit"/></td>
+              <td><t t-esc="line.price_subtotal"/></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </t>
+  </template>
+</odoo>

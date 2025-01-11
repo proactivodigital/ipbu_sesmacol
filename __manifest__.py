@@ -12,7 +12,8 @@
         "product",  # Odoo's product management module.
         "sale_management",  # Sales management module for handling orders and invoices.
         "crm",  # CRM (Customer Relationship Management) module for managing customer interactions.
-        "sale"
+        "sale",
+        "web"
     ],
     
     # Data files to be loaded when the module is installed.
@@ -29,8 +30,10 @@
         "views/sale_order_kanban.xml",  # Kanban-style view for managing sale orders.
         "views/crm_quick_create.xml",
         "views/sale_order_incoterm.xml",
-        'views/sale_report_document.xml',
-        'views/sale_order_stock_inherit.xml'
+        'views/sale_order_stock_inherit.xml',
+        'reports/custom_quotation_report.xml',
+        'reports/custom_quotation_template.xml',
+        'reports/override_report_sale.xml',
     ],
     
     # The following configurations:
