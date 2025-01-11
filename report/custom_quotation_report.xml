@@ -178,46 +178,46 @@
                               <span t-field="doc.signed_by">Oscar Morgan</span>
                             </div>
                           </div>
-                          <div>
+                          <div class="mt-10">
                             <h3>CONDICIONS COMERCIALES</h3>
-                            <div class="d-flex flex-column justify-content-between align-items-center">
-                              <div class="d-flex w-100">
+                            <div>
+                              <div class="d-flex w-100 justify-content-center align-items-center">
                                 <label>Tiempo de entrega:</label>
                                 <div>
                                   <span t-field="doc.date_from">36</span> <span> a </span> <span t-field="doc.date_to">38</span><span> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </span>
                                 </div>
                               </div>
-                              <div class="d-flex w-100">
+                              <div class="d-flex w-100 justify-content-center align-items-center">
                                 <label>Tiempo de entrega:</label>
                                 <div>
                                   <span t-field="doc.date_from">36</span> <span> a </span> <span t-field="doc.date_to">38</span><span> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </span>
                                 </div>
                               </div>
-                              <div class="d-flex w-100">
+                              <div class="d-flex w-100 justify-content-center align-items-center">
                                 <label>Tiempo de entrega:</label>
                                 <div>
                                   <span t-field="doc.date_from">36</span> <span> a </span> <span t-field="doc.date_to">38</span><span> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </span>
                                 </div>
                               </div>
-                              <div class="d-flex w-100">
+                              <div class="d-flex w-100 justify-content-center align-items-center">
                                 <label>Tiempo de entrega:</label>
                                 <div>
                                   <span t-field="doc.date_from">36</span> <span> a </span> <span t-field="doc.date_to">38</span><span> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </span>
                                 </div>
                               </div>
-                              <div class="d-flex w-100">
+                              <div class="d-flex w-100 justify-content-center align-items-center">
                                 <label>Tiempo de entrega:</label>
                                 <div>
                                   <span t-field="doc.date_from">36</span> <span> a </span> <span t-field="doc.date_to">38</span><span> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </span>
                                 </div>
                               </div>
-                              <div class="d-flex w-100">
+                              <div class="d-flex w-100 justify-content-center align-items-center">
                                 <label>Tiempo de entrega:</label>
                                 <div>
                                   <span t-field="doc.date_from">36</span> <span> a </span> <span t-field="doc.date_to">38</span><span> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </span>
                                 </div>
                               </div>
-                              <div class="d-flex w-100">
+                              <div class="d-flex w-100 justify-content-center align-items-center">
                                 <label>Tiempo de entrega:</label>
                                 <div>
                                   <span t-field="doc.date_from">36</span> <span> a </span> <span t-field="doc.date_to">38</span><span> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </span>
