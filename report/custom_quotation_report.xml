@@ -3,9 +3,9 @@
   <report
     id="action_report_sale_order_sesmacol"
     model="sale.order"
-    name="Cotización Sesmacol"
+    string="Cotización Sesmacol"
     report_type="qweb-pdf"
-    report_name="ipbu_sesmacol.sale_report_sale_order_sesmacol"
+    name="ipbu_sesmacol.sale_report_sale_order_sesmacol"
     file="ipbu_sesmacol.sale_report_sale_order_sesmacol"
     print_report_name="'Cotización - %s' % (object.name)"
   />
