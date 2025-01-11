@@ -4,9 +4,9 @@
 
   <!-- Plantilla para el reporte -->
   <template id="sale_report_sale_order_sesmacol">
-    <t t-name="sale.report_saleorder_document">
-      <div id="wrapwrap">
-        <main>
+    <div id="wrapwrap">
+      <main>
+        <t t-name="sale.report_saleorder_document">
           <t t-call="web.external_layout">
             <t t-if="doc">
               <t t-set="forced_vat" t-value="doc.fiscal_position_id.foreign_vat"/>
@@ -189,8 +189,8 @@
               </div>
             </t>
           </t>
-        </main>
-      </div>
-    </t>
+        </t>
+      </main>
+    </div>
   </template>
 </odoo>
