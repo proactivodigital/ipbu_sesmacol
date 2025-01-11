@@ -46,14 +46,14 @@
                             <span t-if="env.context.get('proforma', False) or is_pro_forma">Pro-Forma Invoice # </span>
                             <span t-elif="doc.state in ['draft','sent']">Quotation # </span>
                             <span t-else="">Order # </span>
-                            <span t-field="doc.code">SO0000</span>
+                            <span t-field="doc.name">SO0000</span>
                           </h2>
 
                           <div class="row mt-4 mb-2" id="informations">
                             <div t-if="doc.client_order_ref" class="col-auto col-3 mw-100 mb-2" name="informations_reference">
                               <strong>Your Reference:</strong>
                               <br/>
-                              <span class="m-0" t-field="doc.code">SO0000</span>
+                              <span class="m-0" t-field="doc.name">SO0000</span>
                             </div>
                             <div t-if="doc.date_order" class="col-auto col-3 mw-100 mb-2" name="informations_date">
                               <strong t-if="doc.state in ['draft', 'sent']">Quotation Date:</strong>
@@ -178,8 +178,8 @@
                               <span t-field="doc.signed_by">Oscar Morgan</span>
                             </div>
                           </div>
-                          <div class="mt-10">
-                            <h3>CONDICIONS COMERCIALES</h3>
+                          <div class="mt-20">
+                            <h3>CONDICIONES COMERCIALES</h3>
                             <div>
                               <div class="d-flex w-100 justify-content-center align-items-center">
                                 <label>Tiempo de entrega:</label>
@@ -221,6 +221,12 @@
                               </div>
 
                             </div>
+                            <p style="color: red">*La orden de compra deberá ser dirigida a la empresa:</p>
+                            <p style="color: red">SESMACOL SAS - CARRERA 43F 14A-116, MEDELLÍN, COLOMBIA - NIT 900420368-1</p>
+                            <br />
+                            <br />
+                            <p>EL PRECIO APLICA PARA EL TOTAL DEL MATERIAL COTIZADO, CUALQUIER VARIACIÓN EN LAS CANTIDADES MODIFICARÁ EL PRECIO</p>
+
                           </div>
                           <div class="oe_structure"/>
                         </div>
