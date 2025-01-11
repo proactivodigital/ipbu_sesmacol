@@ -179,15 +179,52 @@
                             </div>
                           </div>
                           <div>
-                            <span t-field="doc.note" t-attf-style="#{'text-align:justify;text-justify:inter-word;' if doc.company_id.terms_type != 'html' else ''}" name="order_note"/>
-                            <p t-if="not is_html_empty(doc.payment_term_id.note)">
-                              <span t-field="doc.payment_term_id.note">The payment should also be transmitted with love</span>
-                            </p>
-                            <div class="oe_structure"/>
-                            <p t-if="doc.fiscal_position_id and not is_html_empty(doc.fiscal_position_id.sudo().note)" id="fiscal_position_remark">
-                              <strong>Fiscal Position Remark:</strong>
-                              <span t-field="doc.fiscal_position_id.sudo().note">No further requirements for this payment</span>
-                            </p>
+                            <h3>CONDICIONS COMERCIALES</h3>
+                            <div>
+                              <div>
+                                <label>Tiempo de entrega:</label>
+                                <div>
+                                  <span t-field="doc.date_from">36</span> <span> a </span> <span t-field="doc.date_to">38</span><span> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </span>
+                                </div>
+                              </div>
+                              <div>
+                                <label>Tiempo de entrega:</label>
+                                <div>
+                                  <span t-field="doc.date_from">36</span> <span> a </span> <span t-field="doc.date_to">38</span><span> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </span>
+                                </div>
+                              </div>
+                              <div>
+                                <label>Tiempo de entrega:</label>
+                                <div>
+                                  <span t-field="doc.date_from">36</span> <span> a </span> <span t-field="doc.date_to">38</span><span> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </span>
+                                </div>
+                              </div>
+                              <div>
+                                <label>Tiempo de entrega:</label>
+                                <div>
+                                  <span t-field="doc.date_from">36</span> <span> a </span> <span t-field="doc.date_to">38</span><span> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </span>
+                                </div>
+                              </div>
+                              <div>
+                                <label>Tiempo de entrega:</label>
+                                <div>
+                                  <span t-field="doc.date_from">36</span> <span> a </span> <span t-field="doc.date_to">38</span><span> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </span>
+                                </div>
+                              </div>
+                              <div>
+                                <label>Tiempo de entrega:</label>
+                                <div>
+                                  <span t-field="doc.date_from">36</span> <span> a </span> <span t-field="doc.date_to">38</span><span> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </span>
+                                </div>
+                              </div>
+                              <div>
+                                <label>Tiempo de entrega:</label>
+                                <div>
+                                  <span t-field="doc.date_from">36</span> <span> a </span> <span t-field="doc.date_to">38</span><span> semanas a partir de aceptación de OC válida. Sujeto a disponibilidad por ventas previas. </span>
+                                </div>
+                              </div>
+
+                            </div>
                           </div>
                           <div class="oe_structure"/>
                         </div>
