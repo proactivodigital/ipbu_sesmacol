@@ -9,8 +9,6 @@
         <main>
           <t t-call="web.external_layout">
             <t t-if="doc">
-            
-              <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
               <t t-set="forced_vat" t-value="doc.fiscal_position_id.foreign_vat"/>
               <!-- So that it appears in the footer of the report instead of the company VAT if it's set -->
               <t t-set="address">
