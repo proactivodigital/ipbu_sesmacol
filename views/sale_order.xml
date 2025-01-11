@@ -24,13 +24,6 @@
                     </h1>
                 </xpath>
 
-                <xpath expr="//button[@name='action_draft']" position="after">
-                    <button name="%(ipbu_sesmacol.action_sale_report_custom)d" 
-                            type="action" 
-                            string="Imprimir Cotización" 
-                            class="btn-primary"/>
-                </xpath>
-
                 <!-- Cambiar el label del campo 'commitment_date' -->
                 <xpath expr="//label[@for='commitment_date']" position="replace">
                     <label for="commitment_date" string="Delivery Date" invisible="1"/>
