@@ -46,14 +46,14 @@
                             <span t-if="env.context.get('proforma', False) or is_pro_forma">Factura de proforma # </span>
                             <span t-elif="doc.state in ['draft','sent']">Cotización # </span>
                             <span t-else="">Orden # </span>
-                            <span t-field="doc.name">SO0000</span>
+                            <span t-field="doc.code">SO0000</span>
                           </h2>
 
                           <div class="row mt-4 mb-2" id="informations">
                             <div t-if="doc.client_order_ref" class="col-auto col-3 mw-100 mb-2" name="informations_reference">
                               <strong>Su referencia:</strong>
                               <br/>
-                              <span class="m-0" t-field="doc.name">SO0000</span>
+                              <span class="m-0" t-field="doc.code">SO0000</span>
                             </div>
                             <div t-if="doc.date_order" class="col-auto col-3 mw-100 mb-2" name="informations_date">
                               <strong t-if="doc.state in ['draft', 'sent']">Fecha de cotización:</strong>
@@ -212,7 +212,7 @@
                                 <span t-field="doc.extended">36</span>
                               </div>
                             </div>
-                            <span style="color: red">*La orden de compra deberá ser dirigida a la empresa:</span>
+                            <span style="color: red">*La orden de compra deberá ser dirigida a la empresa:</span> <br />
                             <span style="color: red">SESMACOL SAS - CARRERA 43F 14A-116, MEDELLÍN, COLOMBIA - NIT 900420368-1</span>
                             <br />
                             <br />
