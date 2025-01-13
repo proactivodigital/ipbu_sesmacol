@@ -17,6 +17,7 @@
                     <field name="date_from"/>
                     <field name="date_to"/>
                     <field name="policy_delivery"/>
+                    <field name="policy_pay"/>
                     <field name="valid"/>
                     <field name="warranty"/>
                     <field name="extended"/>
