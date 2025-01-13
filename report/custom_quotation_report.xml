@@ -19,22 +19,22 @@
                           <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: True}"/>
                           <p t-if="doc.partner_id.vat">
                             <t t-if="doc.company_id.account_fiscal_country_id.vat_label" t-out="doc.company_id.account_fiscal_country_id.vat_label"/>
-                            <t t-else="">Tax ID</t>:          <span t-field="doc.partner_id.vat"/>
+                            <t t-else="">Identificación fiscal</t>:          <span t-field="doc.partner_id.vat"/>
                           </p>
                         </t>
                         <t t-if="doc.partner_shipping_id == doc.partner_invoice_id                              and doc.partner_invoice_id != doc.partner_id                              or doc.partner_shipping_id != doc.partner_invoice_id">
                           <t t-set="information_block">
                             <strong>
                               <t t-if="doc.partner_shipping_id == doc.partner_invoice_id">
-                                Invoicing and Shipping Address:
+                                Dirección de facturación y envío:
                               </t>
                               <t t-else="">
-                                Invoicing Address:
+                                Dirección de facturación:
                               </t>
                             </strong>
                             <div t-field="doc.partner_invoice_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
                             <t t-if="doc.partner_shipping_id != doc.partner_invoice_id">
-                              <strong>Shipping Address:</strong>
+                              <strong>Dirección de envío:</strong>
                               <div t-field="doc.partner_shipping_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>
                             </t>
                           </t>
@@ -43,31 +43,31 @@
                           <div class="oe_structure"/>
 
                           <h2 class="mt-4">
-                            <span t-if="env.context.get('proforma', False) or is_pro_forma">Pro-Forma Invoice # </span>
-                            <span t-elif="doc.state in ['draft','sent']">Quotation # </span>
-                            <span t-else="">Order # </span>
+                            <span t-if="env.context.get('proforma', False) or is_pro_forma">Factura de proforma # </span>
+                            <span t-elif="doc.state in ['draft','sent']">Cotización # </span>
+                            <span t-else="">Orden # </span>
                             <span t-field="doc.name">SO0000</span>
                           </h2>
 
                           <div class="row mt-4 mb-2" id="informations">
                             <div t-if="doc.client_order_ref" class="col-auto col-3 mw-100 mb-2" name="informations_reference">
-                              <strong>Your Reference:</strong>
+                              <strong>Su referencia:</strong>
                               <br/>
                               <span class="m-0" t-field="doc.name">SO0000</span>
                             </div>
                             <div t-if="doc.date_order" class="col-auto col-3 mw-100 mb-2" name="informations_date">
-                              <strong t-if="doc.state in ['draft', 'sent']">Quotation Date:</strong>
-                              <strong t-else="">Order Date:</strong>
+                              <strong t-if="doc.state in ['draft', 'sent']">Fecha de cotización:</strong>
+                              <strong t-else="">Fecha de pedido:</strong>
                               <br/>
                               <span class="m-0" t-field="doc.date_order" t-options="{&quot;widget&quot;: &quot;date&quot;}">2023-12-31</span>
                             </div>
                             <div t-if="doc.validity_date and doc.state in ['draft', 'sent']" class="col-auto col-3 mw-100 mb-2" name="expiration_date">
-                              <strong>Expiration:</strong>
+                              <strong>Vencimiento:</strong>
                               <br/>
                               <span class="m-0" t-field="doc.validity_date">2023-12-31</span>
                             </div>
                             <div t-if="doc.user_id.name" class="col-auto col-3 mw-100 mb-2">
-                              <strong>Salesperson:</strong>
+                              <strong>Vendedora:</strong>
                               <br/>
                               <span class="m-0" t-field="doc.user_id">Mitchell Admin</span>
                             </div>
@@ -82,15 +82,15 @@
                             <!-- In case we want to repeat the header, remove "display: table-row-group" -->
                             <thead style="display: table-row-group">
                               <tr>
-                                <th name="th_description" class="text-start">Description</th>
-                                <th name="th_quantity" class="text-end">Quantity</th>
-                                <th name="th_priceunit" class="text-end">Unit Price</th>
+                                <th name="th_description" class="text-start">Descripción</th>
+                                <th name="th_quantity" class="text-end">Cantidad</th>
+                                <th name="th_priceunit" class="text-end">Precio unitario</th>
                                 <th name="th_discount" t-if="display_discount" class="text-end">
-                                  <span>Disc.%</span>
+                                  <span>Desc.%</span>
                                 </th>
-                                <th name="th_taxes" class="text-end">Taxes</th>
+                                <th name="th_taxes" class="text-end">Impuestos</th>
                                 <th name="th_subtotal" class="text-end">
-                                  <span>Amount</span>
+                                  <span>Cantidad</span>
                                 </th>
                               </tr>
                             </thead>
@@ -122,7 +122,7 @@
                                     </td>
                                     <t t-set="taxes" t-value="', '.join([(tax.invoice_label or tax.name) for tax in line.tax_id])"/>
                                     <td name="td_taxes" t-attf-class="text-end {{ 'text-nowrap' if len(taxes) &lt; 10 else '' }}">
-                                      <span t-out="taxes">Tax 15%</span>
+                                      <span t-out="taxes">Impuesto 15%</span>
                                     </td>
                                     <td t-if="not line.is_downpayment" name="td_subtotal" class="text-end o_price_total">
                                       <span t-field="line.price_subtotal">27.00</span>
@@ -169,7 +169,7 @@
                           <div t-if="not doc.signature" class="oe_structure"/>
                           <div t-else="" class="mt-4 ml64 mr4" name="signature">
                             <div class="offset-8">
-                              <strong>Signature</strong>
+                              <strong>Firma</strong>
                             </div>
                             <div class="offset-8">
                               <img t-att-src="image_data_uri(doc.signature)" style="max-height: 4cm; max-width: 8cm;"/>
@@ -193,7 +193,7 @@
                               </div>
                               <div class="d-flex w-100 justify-content-center align-items-center" style="font-size: 15px">
                                 <label>Términos de pago: </label>
-                                <span>30% con orden de compra; 30% primera entrega de dibujos de los compresores; 30% contra prueba de desempeño; 10% con aviso de despacho</span>
+                                <span t-esc="doc.policy_pay"/>
                               </div>
                               <div class="d-flex w-100 justify-content-center align-items-center" style="font-size: 15px">
                                 <label>Moneda: </label>
