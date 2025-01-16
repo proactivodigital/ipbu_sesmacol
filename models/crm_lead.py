@@ -8,7 +8,7 @@ class CrmLead(models.Model):
     ipbu_count = fields.Integer(string="IPBU Count", compute='_compute_ipbu_count')
 
     # A unique code for each lead, generated when the lead type is 'opportunity'.
-    code = fields.Char(string='Code', readonly=False, copy=False, index=True, unique=True)
+    code = fields.Char(string='Code', readonly=True, copy=False, index=True, unique=True)
 
     # Computes the count of IPBUs related to each CRM lead.
     def _compute_ipbu_count(self):
@@ -35,9 +35,33 @@ class CrmLead(models.Model):
             vals['code'] = self._generate_lead_code()
         return super(CrmLead, self).create(vals)
 
+    # Generates a unique code for the lead based on the current year.
+    def _generate_lead_code(self):
+        """Generates a unique code for opportunities based on the current year."""
+        current_year = datetime.now().year
+        year_suffix = str(current_year)[-2:]  # Get the last two digits of the current year
+        sequence_code = f'crm.lead.code.{year_suffix}'
+
+        # Search for an existing sequence or create a new one
+        seq = self.env['ir.sequence'].sudo().search([('code', '=', sequence_code)], limit=1)
+        if not seq:
+            seq = self.env['ir.sequence'].sudo().create({
+                'name': f'CRM Lead Sequence {year_suffix}',
+                'code': sequence_code,
+                'padding': 4,
+                'prefix': f'L{year_suffix}-',
+            })
+
+        return seq.next_by_id()  # Returns the next number in the sequence
+
     # Overrides the convert_opportunity method to generate the code when converting to an opportunity.
     def convert_opportunity(self, partner_id, user_ids=False, team_id=False):
         """Override to generate the code when converting to opportunity."""
         result = super(CrmLead, self).convert_opportunity(partner_id, user_ids=user_ids, team_id=team_id)
+
+        # Check if the lead type is 'opportunity' and the code is not yet set
+        for lead in self:
+            if lead.type == 'opportunity' and not lead.code:
+                lead.code = lead._generate_lead_code()
 
         return result
