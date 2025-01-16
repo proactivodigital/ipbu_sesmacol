@@ -34,3 +34,10 @@ class CrmLead(models.Model):
         if vals.get('type') == 'opportunity':
             vals['code'] = self._generate_lead_code()
         return super(CrmLead, self).create(vals)
+
+    # Overrides the convert_opportunity method to generate the code when converting to an opportunity.
+    def convert_opportunity(self, partner_id, user_ids=False, team_id=False):
+        """Override to generate the code when converting to opportunity."""
+        result = super(CrmLead, self).convert_opportunity(partner_id, user_ids=user_ids, team_id=team_id)
+
+        return result
