@@ -47,7 +47,6 @@
                             <group>
                                 <!-- Lead code, invoices company, area, and supplier details -->
                                 <field name="lead_code"/>
-                                <field name="company_test"/>
                                 <field name="invoices_company"/>
                                 <field name="area"/>
                                 <field name="principal_supplier"/>
