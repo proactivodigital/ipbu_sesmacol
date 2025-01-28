@@ -79,6 +79,7 @@ class IPBU(models.Model):
     def action_convert_to_quotation(self):
         SaleOrder = self.env['sale.order']  # Referencia al modelo sale.order
         SaleOrderLine = self.env['sale.order.line']  # Referencia al modelo sale.order.line
+        company = self.companies
         
         # Creamos una nueva cotización (sale.order)
         order_vals = {
@@ -88,7 +89,8 @@ class IPBU(models.Model):
             'state': 'draft',  # Estado inicial como borrador
             'opportunity_id': self.lead_id.id,
             'code': self.name,
-            'incoterm': self.incoterm_lead.id
+            'incoterm': self.incoterm_lead.id,
+            'company_incoterm': f"{company.name} - {company.street}, {company.city}, {company.country_id.name} - NIT {company.vat}"
         }
         sale_order = SaleOrder.create(order_vals)
 

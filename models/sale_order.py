@@ -21,6 +21,7 @@ class SaleOrder(models.Model):
     warranty = fields.Text(string='Garantía', required=True)
     extended = fields.Text(string='Nota', required=True)
     valid    = fields.Integer(string='Validez', required=True)
+    company_incoterm = fields.Text(string='Compañia')
     
     @api.depends('incoterm', 'incoterm_location')
     def _compute_policy_delivery(self):
