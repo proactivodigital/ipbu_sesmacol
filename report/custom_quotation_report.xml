@@ -213,7 +213,7 @@
                               </div>
                             </div>
                             <span style="color: red">*La orden de compra deberá ser dirigida a la empresa:</span> <br />
-                            <span style="color: red"><span t-field="doc.company"></span>
+                            <span style="color: red" t-field="doc.company" />
                             <br />
                             <br />
                             <span>EL PRECIO APLICA PARA EL TOTAL DEL MATERIAL COTIZADO, CUALQUIER VARIACIÓN EN LAS CANTIDADES MODIFICARÁ EL PRECIO</span>
