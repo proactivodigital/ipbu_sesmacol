@@ -21,6 +21,7 @@
                     <field name="valid"/>
                     <field name="warranty"/>
                     <field name="extended"/>
+                    <field name="company_incoterm"/>
                 </xpath>
 
                 <xpath expr="//field[@name='picking_policy']" position="replace">

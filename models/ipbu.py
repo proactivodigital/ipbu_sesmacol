@@ -56,13 +56,6 @@ class IPBU(models.Model):
     has_quotation = fields.Boolean(string='Cotización Creada', default=False, tracking=True)
     quotation_id = fields.Many2one('sale.order', string='Cotización')
     lead_code = fields.Text(string='Código Oportunidad', store=True, tracking=True, compute='_compute_lead_code')
-    company_test = fields.Text(string='Compañia', compute='_compute_company_test')
-
-    @api.depends('companies')
-    def _compute_company_test(self):
-        company = self.companies
-        self.company_test = f"{company.name} - {company.street}, {company.city}, {company.country_id.name} - NIT {company.vat}"
-
 
     def action_confirm(self):
         if not self.lead_id:
