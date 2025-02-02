@@ -30,7 +30,6 @@
         "views/sale_order_kanban.xml",  # Kanban-style view for managing sale orders.
         "views/crm_quick_create.xml",
         "views/sale_order_incoterm.xml",
-        'views/sale_order_stock_inherit.xml',
         'report/custom_quotation_report.xml',
     ],
     
