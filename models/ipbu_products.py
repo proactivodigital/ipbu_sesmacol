@@ -96,13 +96,13 @@ class IPBUProductLine(models.Model):
         for line in self:
             line.utility = math.ceil(line.quotation_total - line.origin_expenses - line.cost_custom - line.destination_expenses - line.logistic_margin - line.cost_qty)
 
-    @api.depends('ipbu_id.line_discount', 'product_cost')
+    @api.depends('discount', 'product_cost')
     def _compute_cost(self):
         for line in self:
             if line.product_cost <= 0 or line.product_cost <= 0:
                 line.cost = 0.0
             else:
-                line.cost = math.ceil(line.product_cost * (1 - line.ipbu_id.line_discount))
+                line.cost = math.ceil(line.product_cost * (1 - line.discount))
 
     @api.depends('cost', 'product_qty')
     def _compute_cost_qty(self):
