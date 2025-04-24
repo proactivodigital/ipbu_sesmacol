@@ -4,6 +4,7 @@ import math
 
 class IPBU(models.Model):
     _name = 'ipbu.ipbu'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Modelo de ipbu'
     _rec_name = 'code'
 
@@ -16,8 +17,6 @@ class IPBU(models.Model):
         default=lambda self: self.env['ir.sequence'].next_by_code('ipbu.code') or 'New'
     )
     date = fields.Date(string='Fecha', default=fields.Date.context_today, readonly=True)
-
-    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     lead_id = fields.Many2one('crm.lead', string='Lead/Oportunidad', tracking=True, required=True)
     product_line_ids = fields.One2many('ipbu.product.line', 'ipbu_id', string='Líneas de Producto', tracking=True)
@@ -40,7 +39,7 @@ class IPBU(models.Model):
     companies = fields.Many2one('res.partner', string='CAC Group', tracking=True, required=True, domain=[('x_studio_cac_group', '=', True)])
     area = fields.Text(string='Area', store=True, tracking=True, compute='_compute_area')
     principal_supplier = fields.Text(string='Proveedor', store=True, tracking=True, compute='_compute_principal_supplier')
-    version = fields.Integer(string='Version', required=True, readonly=False, store=True, default="0")
+    version = fields.Integer(string='Version', required=True, readonly=False, store=True, default=0)
     invoices_company = fields.Text(string='Empresa que factura', store=True, tracking=True, compute='_compute_invoices_company')
     incoterm_lead = fields.Many2one('account.incoterms', string='Incoterm', store=True, compute='_compute_incoterm', readonly=False, required=True)
     status = fields.Selection([
@@ -56,6 +55,12 @@ class IPBU(models.Model):
     has_quotation = fields.Boolean(string='Cotización Creada', default=False, tracking=True)
     quotation_id = fields.Many2one('sale.order', string='Cotización')
     lead_code = fields.Text(string='Código Oportunidad', store=True, tracking=True, compute='_compute_lead_code')
+
+    def copy(self, default=None):
+        self.ensure_one()
+        default = dict(default or {})
+        default['name'] = f"{self.name} (COPIA)"
+        return super(IPBU, self).copy(default)
 
     def action_confirm(self):
         if not self.lead_id:
@@ -241,7 +246,6 @@ class IPBU(models.Model):
                 for index, line in enumerate(record.product_line_ids):
                     line.discount = line.discount if line.discount >= 0 else self.line_discount
                     line.real_margin = line.real_margin if line.real_margin else self.margin
-
 
     @api.onchange('product_line_ids')
     def _update_first_product_flag(self):
