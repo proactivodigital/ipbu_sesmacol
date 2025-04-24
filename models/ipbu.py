@@ -60,6 +60,10 @@ class IPBU(models.Model):
         self.ensure_one()
         default = dict(default or {})
         default['name'] = f"{self.name} (COPIA)"
+        default['has_quotation'] = False
+        default['quotation_id'] = False
+        default['lead_code'] = ''
+        default['product_line_ids'] = [(0, 0, line.copy_data()[0]) for line in self.product_line_ids]
         return super(IPBU, self).copy(default)
 
     def action_confirm(self):
