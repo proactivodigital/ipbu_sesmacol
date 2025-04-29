@@ -250,10 +250,6 @@ class IPBU(models.Model):
     def discount_values(self):
         for record in self:
             for line in record.product_line_ids:
-                if line.is_discount_initialized != True:
-                    line.discount = record.line_discount
-                    line.is_discount_initialized = True
-
                 line.real_margin = line.real_margin if line.real_margin else self.margin
 
     @api.onchange('product_line_ids')

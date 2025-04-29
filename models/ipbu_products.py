@@ -46,7 +46,7 @@ class IPBUProductLine(models.Model):
     supplier = fields.Text(string='Supplier', store=True, tracking=True)
     discount = fields.Float(string='Discount', compute='_compute_discount', default="0.0", required=False, store=True, readonly=False, tracking=True)
     category = fields.Text(string='Category', store=True, tracking=True, required=False, readonly=False, compute='_compute_category')
-    is_discount_initialized = fields.Boolean(string='Discount Initialized', default=False, store=True)
+    is_discount_initialized = fields.Boolean(string='Discount Initialized', default=False, store=True, compute='_compute_category')
 
     @api.depends('origin_expenses', 'cost_custom', 'destination_expenses', 'ipbu_id.total_origin_expenses', 'ipbu_id.total_cost_custom', 'ipbu_id.total_destination_expenses')
     def _compute_ponderado_incoterm(self):
@@ -68,10 +68,21 @@ class IPBUProductLine(models.Model):
             record.real_margin = record.real_margin
         return
     
-    @api.depends('discount')
-    def _compute_discount(self):
+    @api.depends('is_discount_initialized')
+    def _compute_is_discount_initialized(self):
+        """Computes the real margin dynamically."""
         for record in self:
-            record.discount = record.discount
+            record.is_discount_initialized = record.is_discount_initialized
+        return
+    
+    @api.depends('discount', 'product_id')
+    def _compute_discount(self):
+        for record in self: 
+            if record.is_discount_initialized != True:
+                record.discount = record.ipbu_id.line_discount
+                record.is_discount_initialized = True
+            else: 
+                record.discount = record.discount
         return
 
     @api.depends('cost_custom', 'destination_expenses')
