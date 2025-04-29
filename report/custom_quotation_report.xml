@@ -97,13 +97,18 @@
                             <tbody class="sale_tbody">
 
                               <t t-set="current_subtotal" t-value="0"/>
+                              <t t-set="item_number" t-value="0"/>
 
                               <t t-foreach="lines_to_report" t-as="line">
 
+                                <t t-set="item_number" t-value="item_number + 1"/>
                                 <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal"/>
 
                                 <tr t-att-class="'bg-200 fw-bold o_line_section' if line.display_type == 'line_section' else 'fst-italic o_line_note' if line.display_type == 'line_note' else ''">
                                   <t t-if="not line.display_type">
+                                    <td name="td_number" class="text-center">
+                                      <span t-esc="item_number"/>
+                                    </td>
                                     <td name="td_name">
                                       <span t-field="line.name">Bacon Burger</span>
                                     </td>

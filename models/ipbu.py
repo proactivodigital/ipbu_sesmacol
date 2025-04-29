@@ -248,7 +248,7 @@ class IPBU(models.Model):
         for record in self:
             if record.product_line_ids:
                 for index, line in enumerate(record.product_line_ids):
-                    line.discount = line.discount if line.discount >= 0 else self.line_discount
+                    line.discount = self.line_discount if line.discount != 0 else line.discount
                     line.real_margin = line.real_margin if line.real_margin else self.margin
 
     @api.onchange('product_line_ids')
