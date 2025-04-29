@@ -249,20 +249,18 @@ class IPBU(models.Model):
     @api.onchange('product_line_ids')
     def discount_values(self):
         for record in self:
-            if record.product_line_ids:
-                for index, line in enumerate(record.product_line_ids):
-                    line.discount = line.discount if line.discount >= 0 else self.line_discount
-                    line.real_margin = line.real_margin if line.real_margin else self.margin
+            for line in record.product_line_ids:
+                if not line.is_discount_initialized:
+                    line.discount = record.line_discount
+                    line.is_discount_initialized = True
+                if line.real_margin == 0.0:
+                    line.real_margin = record.margin
 
     @api.onchange('product_line_ids')
     def _update_first_product_flag(self):
         for record in self:
             if record.product_line_ids:
                 for index, line in enumerate(record.product_line_ids):
-                    line.discount = record.line_discount if line.discount != 0 else line.discount
-                    _logger.info("AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
-                    _logger.info(record.line_discount if line.discount != 0 else line.discount)
-
                     if index == 0:
                         can_sum = False
                         total_sum = 0

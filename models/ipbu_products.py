@@ -46,6 +46,7 @@ class IPBUProductLine(models.Model):
     supplier = fields.Text(string='Supplier', store=True, tracking=True)
     discount = fields.Float(string='Discount', compute='_compute_discount', default="0.0", required=False, store=True, readonly=False, tracking=True)
     category = fields.Text(string='Category', store=True, tracking=True, required=False, readonly=False, compute='_compute_category')
+    is_discount_initialized = fields.Boolean(default=False)
 
     @api.depends('origin_expenses', 'cost_custom', 'destination_expenses', 'ipbu_id.total_origin_expenses', 'ipbu_id.total_cost_custom', 'ipbu_id.total_destination_expenses')
     def _compute_ponderado_incoterm(self):
