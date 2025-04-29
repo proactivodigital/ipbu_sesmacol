@@ -1,6 +1,9 @@
 from odoo import models, fields, api
 from odoo.exceptions import ValidationError
 import math
+import logging
+
+_logger = logging.getLogger(__name__)
 
 class IPBU(models.Model):
     _name = 'ipbu.ipbu'
@@ -257,6 +260,8 @@ class IPBU(models.Model):
             if record.product_line_ids:
                 for index, line in enumerate(record.product_line_ids):
                     line.discount = record.line_discount if line.discount != 0 else line.discount
+                    _logger.info("AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
+                    _logger.info(record.line_discount if line.discount != 0 else line.discount)
 
                     if index == 0:
                         can_sum = False
