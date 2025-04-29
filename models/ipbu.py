@@ -250,6 +250,8 @@ class IPBU(models.Model):
     def discount_values(self):
         for record in self:
             for line in record.product_line_ids:
+                _logger.info("AQUIIIIIIIIIIIIIIII")
+                _logger.info(line.is_discount_initialized)
                 if line.is_discount_initialized != True:
                     line.discount = record.line_discount
                     line.is_discount_initialized = True
