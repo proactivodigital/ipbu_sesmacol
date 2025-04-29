@@ -253,8 +253,6 @@ class IPBU(models.Model):
                 if line.is_discount_initialized != True:
                     line.discount = record.line_discount
                     line.is_discount_initialized = True
-                    _logger.info("AQUIIIIIIIIIIIIIIII")
-                    _logger.info(line.is_discount_initialized)
 
                 line.real_margin = line.real_margin if line.real_margin else self.margin
 

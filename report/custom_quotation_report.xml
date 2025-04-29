@@ -82,6 +82,7 @@
                             <!-- In case we want to repeat the header, remove "display: table-row-group" -->
                             <thead style="display: table-row-group">
                               <tr>
+                                <th name="th_description" class="text-start">#</th>
                                 <th name="th_description" class="text-start">Descripción</th>
                                 <th name="th_quantity" class="text-end">Cantidad</th>
                                 <th name="th_priceunit" class="text-end">Precio unitario</th>
