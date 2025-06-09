@@ -67,6 +67,26 @@ class IPBU(models.Model):
         default['quotation_id'] = False
         default['lead_code'] = ''
         default['product_line_ids'] = [(0, 0, line.copy_data()[0]) for line in self.product_line_ids]
+        default['total_cost_cac'] = self.total_cost_cac
+        default['total_sale_exw'] = self.total_sale_exw
+        default['total_origin_expenses'] = self.total_origin_expenses
+        default['total_cost_custom'] = self.total_cost_custom
+        default['total_destination_expenses'] = self.total_destination_expenses
+        default['total_logistics_margin'] = self.total_logistics_margin
+        default['total_ddp'] = self.total_ddp
+        default['margin'] = self.margin
+        default['line_discount'] = self.line_discount
+        default['local_utility'] = self.local_utility
+        default['invoice_cac'] = self.invoice_cac
+        default['utility_cac'] = self.utility_cac
+        default['category'] = self.category
+        default['companies'] = self.companies
+        default['area'] = self.area
+        default['principal_supplier'] = self.principal_supplier
+        default['version'] = self.version
+        default['invoices_company'] = self.invoices_company
+        default['incoterm_lead'] = self.incoterm_lead
+        default['status'] = self.status
         return super(IPBU, self).copy(default)
 
     def action_confirm(self):
@@ -295,9 +315,6 @@ class IPBU(models.Model):
                         for i, l in enumerate(record.product_line_ids):
                             if(i != 0):
                                 total += l.sale_qty_exw
-
-                        if (line.sale_qty_exw != 0 and total != 0):
-                            line.ponderado_incoterm = (line.sale_qty_exw / total) * (1 - record.product_line_ids[0].ponderado_incoterm)
     
     def action_view_quotation(self):
         self.ensure_one()
